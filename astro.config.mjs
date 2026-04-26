@@ -41,7 +41,7 @@ export default defineConfig({
 				{
 					label: 'The Story',
 					items: [
-						{ label: 'Characters', slug: 'story/characters' },
+						{ label: 'Characters & Legal Cases', slug: 'story/characters' },
 						{ label: 'Chapter Outline', slug: 'story/outline' },
 					],
 				},
