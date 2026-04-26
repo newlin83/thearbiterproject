@@ -33,7 +33,7 @@ export default defineConfig({
 				{
 					label: 'Life Inside Arbitration',
 					items: [
-						{ label: 'Daily Life', slug: 'ife/daily' },
+						{ label: 'Daily Life', slug: 'life/daily' },
 						{ label: 'Children & Families', slug: 'life/children' },
 						{ label: 'The Economics', slug: 'life/economics' },
 					],
