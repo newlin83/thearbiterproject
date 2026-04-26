@@ -28,6 +28,7 @@ export default defineConfig({
 						{ label: 'The Amendment', slug: 'legal/amendment' },
 						{ label: 'The Ceremony', slug: 'legal/ceremony' },
 						{ label: 'The Contract', slug: 'legal/contract' },
+						{ label: 'Landmark Legal Cases', slug: 'legal/cases' },
 					],
 				},
 				{
