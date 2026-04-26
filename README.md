@@ -1,6 +1,6 @@
-# Liminal Forms
+# The Arbiter Project
 
-[Liminal Forms](https://www.liminalforms.com/)
+[The Arbiter Project](https://www.thearbiterproject.com/)
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
@@ -20,9 +20,7 @@ Starlight documentation site
 
 ## About
 
-The site is an overview of The Backrooms and how it is the source of all civilization. I modified the existing Starlight basic template to be more aligned with an essay type site.
+The site is an overview of a Novella concept about people who submit themselves to binding arbitration for their entire lives and delegate everything to an arbiter (housing, money, food, voting...everything)
 
-I liked the left nav bar, but deleted the existing right nav bar. I then created two columms, a left column for the body text, and a right column for margin notes. This comes from the work of Edward Tufte, and I plan to continue updating the site to take on more of Edward Tufte's thoughts.
-
-The site is really a combination of Startlight, Tufte CSS, and Tufte Classless css. The custom.css shows the tweaks made.
+The landing page is meant look like an actual page for someone interested in Arbitration. This then leads to the backup site where I have more of the documents laid out.
 
