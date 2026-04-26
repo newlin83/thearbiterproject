@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arbiter — A Better Way to Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --parchment: #f5f0e8;
+    --warm-white: #faf8f4;
+    --gold: #8b6914;
+    --gold-light: #c9a84c;
+    --rule: #d4c9b0;
+    --muted: #7a7268;
+    --accent: #3d2b0e;
+    --red: #8b1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250, 248, 244, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 3rem 6rem;
+    position: relative;
+    text-align: center;
+    background: var(--parchment);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      linear-gradient(180deg, var(--parchment) 0%, var(--warm-white) 100%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--accent);
+    position: relative;
+    max-width: 900px;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.7;
+    position: relative;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--parchment);
+    padding: 0.9rem 2.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    transition: all 0.25s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .btn-secondary {
+    color: var(--muted);
+    padding: 0.9rem 2.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    transition: all 0.25s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rule);
+    animation: fadeInUp 2s ease 1s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--rule), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* ORNAMENTAL RULE */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 3rem auto;
+    max-width: 300px;
+  }
+
+  .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .ornament-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold-light);
+    transform: rotate(45deg);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    margin-top: 2.5rem;
+  }
+
+  p {
+    color: #3a3530;
+    margin-bottom: 1.25rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* PROBLEM SECTION */
+  .problem-section {
+    background: var(--parchment);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    margin-top: 3.5rem;
+    background: var(--rule);
+  }
+
+  .problem-card {
+    background: var(--warm-white);
+    padding: 2.5rem;
+  }
+
+  .problem-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .problem-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .problem-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  /* STATS SECTION */
+  .stats-section {
+    background: var(--accent);
+    color: var(--parchment);
+  }
+
+  .stats-section .section-label { color: var(--gold-light); }
+  .stats-section h2 { color: var(--parchment); }
+  .stats-section p { color: rgba(245,240,232,0.75); }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 4rem;
+    border: 1px solid rgba(212,201,176,0.2);
+  }
+
+  .stat-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(212,201,176,0.2);
+    border-bottom: 1px solid rgba(212,201,176,0.2);
+    text-align: center;
+  }
+
+  .stat-item:nth-child(3n) { border-right: none; }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.4;
+  }
+
+  .stat-note {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.4);
+    font-style: italic;
+    margin-top: 0.4rem;
+  }
+
+  /* MYTH SECTION */
+  .myth-section {
+    background: var(--warm-white);
+  }
+
+  .myth-item {
+    border-top: 1px solid var(--rule);
+    padding: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .myth-item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .myth-concern {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--red);
+    line-height: 1.4;
+  }
+
+  .myth-concern::before {
+    content: '"';
+    font-size: 2rem;
+    color: rgba(139,26,26,0.2);
+    display: block;
+    line-height: 0.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .myth-response h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .myth-response p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* JOURNEY SECTION */
+  .journey-section {
+    background: var(--parchment);
+    border-top: 1px solid var(--rule);
+  }
+
+  .journey-steps {
+    margin-top: 3.5rem;
+    position: relative;
+  }
+
+  .journey-steps::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .journey-step {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .step-marker {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-duration {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .step-content p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* DAILY LIFE SECTION */
+  .daily-section {
+    background: var(--warm-white);
+  }
+
+  .day-timeline {
+    margin-top: 3rem;
+    border-left: 1px solid var(--rule);
+    padding-left: 2.5rem;
+  }
+
+  .time-block {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(212,201,176,0.4);
+  }
+
+  .time-block:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .time-block::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.35rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    transform: translateX(-50%);
+    border: 2px solid var(--warm-white);
+    box-shadow: 0 0 0 1px var(--rule);
+  }
+
+  .time-stamp {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .time-block h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .time-block p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* LEGAL SECTION */
+  .legal-section {
+    background: var(--parchment);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .case-item {
+    padding: 2rem;
+    background: var(--warm-white);
+    border-left: 3px solid var(--gold-light);
+  }
+
+  .case-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .case-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .case-item p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CHILDREN SECTION */
+  .children-section {
+    background: var(--warm-white);
+  }
+
+  /* PULLQUOTE */
+  .pullquote {
+    border-left: 3px solid var(--gold-light);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    background: rgba(201,168,76,0.05);
+  }
+
+  .pullquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--accent);
+    text-align: center;
+    padding: 8rem 3rem;
+  }
+
+  .cta-section .section-label { color: var(--gold-light); justify-content: center; }
+  .cta-section .section-label::before { display: none; }
+
+  .cta-section h2 {
+    color: var(--parchment);
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .cta-section p {
+    color: rgba(245,240,232,0.65);
+    max-width: 550px;
+    margin: 0 auto 3rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-section .btn-primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--accent);
+  }
+
+  .cta-section .btn-primary:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  .cta-section .btn-secondary {
+    color: rgba(245,240,232,0.65);
+    border-color: rgba(212,201,176,0.3);
+  }
+
+  .cta-section .btn-secondary:hover {
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0f0d0a;
+    color: rgba(245,240,232,0.4);
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .footer-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.7);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.25);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-more {
+  color: var(--gold-light) !important;
+  border-left: 1px solid var(--rule);
+  padding-left: 2.5rem !important;
+  margin-left: 1rem;
+}
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 5rem; }
+    .myth-item { grid-template-columns: 1fr; gap: 1.5rem; }
+    .legal-grid { grid-template-columns: 1fr; }
+    .stat-item:nth-child(3n) { border-right: 1px solid rgba(212,201,176,0.2); }
+    .stat-item:nth-child(even) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-mark">The Arbiter</div>
+  <ul class="nav-links">
+    <li><a href="#what">What It Is</a></li>
+    <li><a href="#why">Why Now</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#concerns">Concerns</a></li>
+    <li><a href="#journey">The Journey</a></li>
+    <li><a href="#daily">Daily Life</a></li>
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="/overview/" class="nav-more">Full Documentation →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">Civic Arbitration System</div>
+  <h1>Your life, <em>finally</em><br>working for you.</h1>
+  <p class="hero-sub">Arbitration is a voluntary, comprehensive life-management system that matches each person to the specific conditions under which they genuinely flourish — and then provides those conditions, permanently and completely.</p>
+  <div class="hero-cta">
+    <a href="#journey" class="btn-primary">Begin the Journey</a>
+    <a href="#what" class="btn-secondary">Learn More</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- WHAT IT IS -->
+<section id="what">
+  <div class="container fade-in">
+    <div class="section-label">What Is Arbitration</div>
+    <h2>Not a service. Not a program.<br><em>A different way to live.</em></h2>
+    <p>Arbitration is a comprehensive, voluntary framework in which enrolled individuals delegate the major structural decisions of their lives — housing, occupation, nutrition, healthcare, financial management, and civic participation — to the Arbiter, a system of extraordinary analytical precision that determines, for each person individually, the specific conditions under which that person thrives.</p>
+    <p>In exchange, the Arbiter provides those conditions. Completely. Permanently. Without the friction, the expense, the cognitive load, or the accumulated mismatch that characterizes most people's experience of trying to build a good life in an environment not designed for them.</p>
+    <p>This is not a new idea. For most of human history, the structure of individual lives was determined not by personal choice but by community, tradition, family, and station. These structures were often unjust and frequently wrong. But they produced something that modern freedom has conspicuously failed to produce at scale: a sense of fit between a person and their life. People knew what they were doing and why. They had a place. The anxiety of infinite option — the grinding question of whether you are doing the right thing with the one life you have — was, for most people across most of history, simply not a feature of daily experience.</p>
+    <p>Arbitration restores fit. Not through tradition, not through coercion, not through the accident of birth — but through the most rigorous and comprehensive individual assessment ever applied to the question of human flourishing, and through the institutional capacity to actually provide what that assessment determines each person needs.</p>
+
+    <div class="pullquote">
+      <p>The question was never whether people wanted good lives. The question was whether the systems they lived inside were capable of producing them. For the first time in history, one is.</p>
+    </div>
+
+    <p>Enrollment is voluntary. The process is deliberate, documented, and extensively witnessed. No one enters Arbitration under pressure, in haste, or without complete understanding of what they are agreeing to. The enrollment sequence takes a minimum of seven months and involves seventeen separate agreements, each separated by a mandatory waiting period, each signed under oath before witnesses and notaries. The final act — the Civic Delegation Ceremony, by which enrolled individuals permanently delegate their voting franchise — is conducted before a panel of three federal judges, broadcast publicly, and archived in perpetuity.</p>
+    <p>This care is not bureaucratic. It is the system's first and most fundamental promise: that the decision you make to enter Arbitration is the most thoroughly supported decision you will ever make, and that you will never have cause to believe you did not know what you were choosing.</p>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section id="why" class="problem-section">
+  <div class="container-wide fade-in">
+    <div class="section-label">The Problem</div>
+    <h2>Modern life promises freedom.<br><em>It delivers exhaustion.</em></h2>
+    <p style="max-width:700px; margin-bottom: 0;">The pre-Arbitration world produced extraordinary material abundance and then distributed the burden of managing that abundance as if every person were equally equipped to carry it. They are not. They never were.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-number">01</div>
+        <h4>Decision Fatigue</h4>
+        <p>The average adult makes approximately 35,000 decisions per day. Research consistently shows that decision quality degrades with volume — that the person choosing their diet, their housing, their career, and their financial strategy is using the same cognitive resource that is depleted by choosing what to wear. The modern world has maximized the number of decisions required and provided no infrastructure for making them well.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">02</div>
+        <h4>The Mismatch Problem</h4>
+        <p>Most human suffering in the contemporary world is not caused by cruelty or deprivation. It is caused by mismatch: people in occupations that don't fit them, communities that don't suit them, relationships they chose under emotional load, housing that reflects aspiration rather than need. The cost of mismatch — in wellbeing, in productivity, in the quality of every day — is enormous and almost entirely invisible because there is no baseline against which to measure it.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">03</div>
+        <h4>The Loneliness Epidemic</h4>
+        <p>Loneliness is now recognized as a public health crisis of the first order, with health impacts comparable to smoking fifteen cigarettes per day. The pre-Arbitration world produced unprecedented individual freedom and unprecedented individual isolation simultaneously — because the social infrastructure that historically sustained community was dismantled in the name of mobility, and nothing replaced it.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">04</div>
+        <h4>Healthcare as Crisis Management</h4>
+        <p>The pre-Arbitration healthcare system was organized around treating illness after it developed rather than preventing it before it did. Access was determined by ability to pay. Quality was determined by geography and insurance status. The result was a population that was sicker, more anxious about its health, and more financially fragile from healthcare costs than any comparable level of medical technology should have produced.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">05</div>
+        <h4>Financial Complexity Without Support</h4>
+        <p>Modern financial life requires the skills of an accountant, a tax attorney, an investment advisor, and an insurance specialist, applied to decisions with multi-decade consequences, made under conditions of incomplete information and emotional stress. These skills are not uniformly distributed. The gap between those who have access to sophisticated financial guidance and those who do not is one of the primary mechanisms by which inequality compounds across generations.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">06</div>
+        <h4>The Parenting Lottery</h4>
+        <p>The single most consequential determinant of a child's life outcomes — the psychological health, stability, and attunement of their parents — was, in the pre-Arbitration world, entirely random. Children were born to whoever conceived them, raised under whatever conditions those people could provide, and shaped by dynamics that their parents were themselves shaped by, in an unbroken chain of accumulated damage that no intervention arrived early enough or was comprehensive enough to interrupt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="outcomes" class="stats-section">
+  <div class="container fade-in">
+    <div class="section-label">Measured Outcomes</div>
+    <h2>The data on enrolled populations<br>speaks without ambiguity.</h2>
+    <p>The following figures represent outcomes measured across enrolled populations compared to matched non-enrolled cohorts over a twelve-year period. All data is independently verified by the Institute for Population Wellbeing Research.</p>
+  </div>
+
+  <div class="container-wide fade-in" style="margin-top: 3rem;">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">73%</div>
+        <div class="stat-label">Reduction in<br>Clinical Depression</div>
+        <div class="stat-note">vs. matched non-enrolled cohort</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">81%</div>
+        <div class="stat-label">Reduction in<br>Chronic Loneliness</div>
+        <div class="stat-note">self-reported, 12-year longitudinal</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">94%</div>
+        <div class="stat-label">Occupational<br>Satisfaction Rate</div>
+        <div class="stat-note">enrolled vs. 23% general population</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Child Maltreatment<br>Cases</div>
+        <div class="stat-note">in enrolled family units, all years</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">67%</div>
+        <div class="stat-label">Reduction in<br>Anxiety Disorders</div>
+        <div class="stat-note">clinical diagnosis rate, enrolled</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.2×</div>
+        <div class="stat-label">Creative Output<br>Increase</div>
+        <div class="stat-note">for creatively-assigned enrollees</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">88%</div>
+        <div class="stat-label">Report Life as<br>"Deeply Meaningful"</div>
+        <div class="stat-note">vs. 14% general population</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Adult Children of<br>Enrollees Who Enroll</div>
+        <div class="stat-note">voluntary choice at age 18</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Dissolution Requests<br>Citing Regret</div>
+        <div class="stat-note">in 31 years of enrollment history</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MYTH BUSTING -->
+<section id="concerns" class="myth-section">
+  <div class="container fade-in">
+    <div class="section-label">Common Concerns</div>
+    <h2>Every question deserves<br><em>an honest answer.</em></h2>
+    <p>The concerns most frequently raised about Arbitration are not unreasonable. They are the natural response of people who have lived inside systems that promised care and delivered control. Arbitration understands these concerns. It was designed in response to them.</p>
+  </div>
+
+  <div class="container fade-in" style="margin-top: 3rem;">
+
+    <div class="myth-item">
+      <div class="myth-concern">Is this Big Brother? Is the Arbiter watching everything I do?</div>
+      <div class="myth-response">
+        <h4>The honest answer</h4>
+        <p>No. The Arbiter does not surveil enrolled individuals' behavior, speech, relationships, or private lives. The Information and Communication Agreement — one of the twenty-four documents signed during enrollment — specifies precisely what data the system collects and what it does not. The system knows what it needs to know to provision your life: whether your food was consumed, whether your clothing was returned, whether your unit was accessed for cleaning. It does not know what you say, what you think, who you love, or what you do in private. The distinction between a provisioning system and a surveillance system is structural, not rhetorical, and it is enforced by the enrollment agreement itself.</p>
+      </div>
+    </div>
+
+    <div class="myth-item">
+      <div class="myth-concern">What's to stop Arbitration from forcing me to do things I don't want to do?</div>
+      <div class="myth-response">
+        <h4>The honest answer</h4>
+        <p>The enrollment agreements are specific about what the Arbiter decides and what remains yours. The Arbiter determines the structure of your life — where you live, what work you do, how your finances are managed. It does not determine the content of your inner life, your relationships, your creative expression, your beliefs, or your private behavior. More importantly: the Arbiter's decisions are driven by your assessment — by who you actually are — not by an external agenda. The system has no ideology, no political program, and no interest in producing any particular kind of person. It has one interest: producing the conditions under which you, specifically, flourish.</p>
+      </div>
+    </div>
+
+    <div class="myth-item">
+      <div class="myth-concern">Will everyone end up living the same bland, identical life?</div>
+      <div class="myth-response">
+        <h4>The honest answer</h4>
+        <p>The opposite. Arbitration produces more human diversity than any prior system in history, because it eliminates the economic gravity that pulls everyone toward the same narrow range of viable life choices. In the pre-Arbitration world, people who might have been contemplatives became accountants because contemplation didn't pay. Artists became managers. Scientists became salespeople. Under Arbitration, the person assessed as needing to compose music composes music. The person assessed as needing physical challenge works physically. The person assessed as needing intellectual freedom pursues intellectual freedom. Some people are assigned to roles of extraordinary comfort. Some are assigned to roles of deliberate difficulty, because difficulty is what they need. No two enrolled lives look the same, because no two enrolled people are the same.</p>
+      </div>
+    </div>
+
+    <div class="myth-item">
+      <div class="myth-concern">Could Arbitration force sterilization or decide who lives and who dies?</div>
+      <div class="myth-response">
+        <h4>The honest answer</h4>
+        <p>No. The Twenty-Eighth Amendment and the Arbitration Act both specify, with unambiguous clarity, the limits of what may be delegated. Freedom from torture, cruel and unusual treatment, and summary execution cannot be delegated. The reproductive agreements address whether and when enrolled individuals have children — not whether they are physically capable of reproduction. The health agreements address medical care — not its termination without the enrolled individual's advance directive. These limits are constitutional, they are monitored by federal courts, and they have never been approached in the thirty-one-year history of the system.</p>
+      </div>
+    </div>
+
+    <div class="myth-item">
+      <div class="myth-concern">What if the Arbiter gets my assessment wrong? What if it puts me in the wrong life?</div>
+      <div class="myth-response">
+        <h4>The honest answer</h4>
+        <p>The assessment process is the most comprehensive individual evaluation ever conducted at scale. It draws on decades of outcomes research, refined by the data of every prior enrollment, to produce placements that are right far more consistently than any prior system for matching people to lives. That said: the system is not infallible, and it does not claim to be. The Arbiter's ongoing provisioning system includes continuous wellbeing assessment, and placements are recalibrated when the data indicates they are not producing the predicted outcomes. The Arbiter is designed to be correct. When it is not correct, it is designed to know that and to adjust.</p>
+      </div>
+    </div>
+
+    <div class="myth-item">
+      <div class="myth-concern">Isn't this just a comfortable prison? You've given up your freedom.</div>
+      <div class="myth-response">
+        <h4>The honest answer</h4>
+        <p>This question deserves the most honest engagement of all. Arbitration involves real delegation — real, permanent, consequential delegation of decisions that most people consider central to their sense of self. That is true. What is also true is that most of the freedom people believe they are exercising in the pre-Arbitration world is exercised under conditions that systematically undermine it: under economic pressure, cognitive load, incomplete information, and the accumulated weight of prior choices made under the same constraints. The question is not whether Arbitration involves constraint. It does. The question is whether the constraint produces a better life than the freedom that preceded it. Across enrolled populations, by every measure available, it does. What you are giving up is the experience of choosing. What you are receiving is the experience of being exactly right.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="journey-section">
+  <div class="container fade-in">
+    <div class="section-label">The Enrollment Journey</div>
+    <h2>Seven months to a<br><em>permanent decision.</em></h2>
+    <p>The enrollment sequence is deliberately long. Every waiting period exists because the decision you are making is permanent, and permanence deserves time. You may withdraw at any point before final judicial confirmation, without penalty and without explanation. The process is designed to ensure that the person who completes it is the person who is entirely certain.</p>
+
+    <div class="journey-steps">
+
+      <div class="journey-step">
+        <div class="step-marker">I</div>
+        <div class="step-content">
+          <h4>Expression of Intent</h4>
+          <div class="step-duration">Day 1 — Beginning of 90-day period</div>
+          <p>You submit a formal Expression of Intent to your nearest Delegation Center. This creates no legal obligation. You are assigned an Enrollment Advisor whose sole function is to ensure you have complete, accurate information. You receive all twenty-four enrollment agreements in full. Independent legal review is encouraged and supported.</p>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-marker">II</div>
+        <div class="step-content">
+          <h4>The 90-Day Period</h4>
+          <div class="step-duration">Days 1–90</div>
+          <p>You read. You ask questions. You meet with your Enrollment Advisor at least once for a documented dialogue that becomes part of your permanent file. You may consult with any person you choose, including legal counsel entirely unconnected to the Arbitration system. Nothing is hidden from you. Nothing is rushed.</p>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-marker">III</div>
+        <div class="step-content">
+          <h4>The Signing Sequence</h4>
+          <div class="step-duration">Months 3–10 — One agreement per 14-day period</div>
+          <p>You sign each of the twenty-four agreements in sequence, one every fourteen days, at your Delegation Center. Each signing is conducted before an Arbiter Agent, two independent witnesses, and two notaries. Each agreement is sworn under oath. Physical and digital copies go to you, to the Center, and to federal archives. You may stop at any point.</p>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-marker">IV</div>
+        <div class="step-content">
+          <h4>The Civic Delegation Ceremony</h4>
+          <div class="step-duration">Final step before judicial confirmation</div>
+          <p>The most formal act in the enrollment sequence. Conducted before three federal judges in a purpose-built Civic Delegation Center, open to the public, livestreamed and permanently archived. Your federal voting franchise is delegated in a ceremony that takes five to seven hours and produces the most thoroughly documented act of voluntary consent in American legal history.</p>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-marker">V</div>
+        <div class="step-content">
+          <h4>Judicial Confirmation</h4>
+          <div class="step-duration">3–10 days following the Ceremony</div>
+          <p>Federal and state district court judges review the complete assembled package — all twenty-four agreements, all biometric records, all notarized copies, and the Civic Delegation case number — and issue confirmatory orders. No package that has reached this stage has ever been declined. At midnight on the day both signatures are received, enrollment becomes active.</p>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-marker">VI</div>
+        <div class="step-content">
+          <h4>Your First 90 Days</h4>
+          <div class="step-duration">Active enrollment begins</div>
+          <p>Your placement activates. Housing is assigned. Occupational transition is managed. Provisioning begins. A Transition Coordinator is assigned to your first three months — a human professional whose role is to support your adjustment, answer questions, and ensure the transition from non-enrolled life is as smooth as the system is capable of making it. Most people describe the first ninety days as the most disorienting and the most clarifying period of their lives.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DAILY LIFE -->
+<section id="daily" class="daily-section">
+  <div class="container fade-in">
+    <div class="section-label">What Life Looks Like</div>
+    <h2>A Tuesday,<br><em>inside Arbitration.</em></h2>
+    <p>This is not a promotional rendering. This is a representative account of an enrolled professional's ordinary day, drawn from the provisioning patterns and wellbeing assessments of the enrolled population. Specifics vary by profile, placement, and occupational assignment. The texture does not.</p>
+
+    <div class="day-timeline">
+
+      <div class="time-block">
+        <div class="time-stamp">6:15 AM — Morning</div>
+        <h4>A managed waking</h4>
+        <p>Light in the bedroom rises slowly, calibrated to the sleep cycle your mattress's climate sensors have been tracking — not for surveillance, but because the building manages temperature and the data is a byproduct. There is no alarm. The building knows what time you need to be functional. On days when your schedule is light, the light starts later. You have not set an alarm in the time you have been enrolled. You do not miss it.</p>
+      </div>
+
+      <div class="time-block">
+        <div class="time-stamp">6:35 AM — Nutrition</div>
+        <h4>Breakfast, ready</h4>
+        <p>The food interface in your kitchen wall has received this morning's provisioning from the building's central kitchen. Hot compartment, cold compartment, ambient. You did not choose what's there — you specified, at intake, the parameters of your food provisioning, and the system has calibrated continuously against your health data and the day's occupational demands. The food is appropriate. It fits you in the way that food almost never fit you before enrollment, when you were choosing it under stress, in haste, or from whatever was available. Empty containers return through the interface. You do not wash them. There is nothing to wash.</p>
+      </div>
+
+      <div class="time-block">
+        <div class="time-stamp">7:00 AM — Clothing</div>
+        <h4>Dressed without deciding</h4>
+        <p>Yesterday's clothing went back through the garment interface before bed. This morning's selection is on the other side — appropriate to today's schedule, the weather, the professional context, your physical measurements and aesthetic profile. It fits. The Arbiter holds your wardrobe in a managed facility. You do not own these garments in the way you previously owned clothing. You have them, which is what you actually needed from clothing all along. You get dressed. The decision has already been made. You notice, not for the first time, how much of your morning is now simply yours.</p>
+      </div>
+
+      <div class="time-block">
+        <div class="time-stamp">9:00 AM–6:00 PM — Occupation</div>
+        <h4>Work that is actually yours</h4>
+        <p>Your occupational assignment was made on the basis of your assessment — not your resume, not your prior experience, not your stated preferences, but who you actually are and where your capacities actually lie. You may be doing something you expected. You may be doing something that surprised you. Either way, you are doing it among people whose profiles make them specifically suited to work alongside you, in an organization whose composition was assembled with the same precision as your individual placement. The work is better than it was. It is better because you are better matched to it, and because the people around you are better matched to their roles, and because you are not carrying the cognitive load of an unmanaged life into the room with you every day.</p>
+      </div>
+
+      <div class="time-block">
+        <div class="time-stamp">6:30 PM — Return</div>
+        <h4>Home as it should be</h4>
+        <p>Your unit was cleaned this afternoon, during the window you specified on your unit device. The team entered through the service corridor. Your things are exactly where you left them — the protocol is explicit about this. The temperature is what it should be. Dinner is in the food interface. You decide, standing in your kitchen, whether you want to eat in your unit tonight or take your dinner to the communal dining room on your floor. Both options require nothing of you except the choice itself. This is what it means for a life to be provisioned: not that everything is done for you, but that the things requiring infrastructure — the acquiring, the preparing, the managing, the maintaining — have been handled, and what remains are the things that are actually yours to do.</p>
+      </div>
+
+      <div class="time-block">
+        <div class="time-stamp">8:00 PM — Evening</div>
+        <h4>Time that belongs to you</h4>
+        <p>What you do with your evening is not the Arbiter's concern. Read. Speak with the neighbor you have come to know from communal dinners. Pursue whatever the space of a provisioned life has made room for. The Arbiter's interest in your evening ends at the food interface and the garment pass-through. Everything in between is yours. This is what the early adopters struggled to describe and what everyone who has been enrolled long enough understands: the quality of freedom that becomes available when the structural questions of your life have been answered is different from — and in most ways greater than — the quality of freedom that consists of answering those questions yourself, badly, under conditions that were never designed for the task.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHILDREN -->
+<section id="children" class="children-section">
+  <div class="container fade-in">
+    <div class="section-label">Families and Children</div>
+    <h2>The first generation<br><em>raised without the lottery.</em></h2>
+    <p>For most of human history, the single most consequential factor in a child's life — the psychological health of the people who raised them — was entirely determined by chance. Children were born to whoever conceived them. The results were distributed accordingly.</p>
+    <p>Under Arbitration, enrolled individuals who wish to have children undergo a joint parenting assessment that evaluates not individual profiles in isolation but the specific dynamics of the relationship: how the couple navigates conflict, how their parenting values align, what the system's models predict about their capacity to raise a child to functional adulthood together. Most assessments result in approval. Those that do not result in denial result in a structured support path and the opportunity to reassess.</p>
+    <p>Children born to enrolled parents are subject to the Enrolled Minor framework — a comprehensive developmental wellness system that provides each child with independent oversight entirely separate from their parents. From early childhood, enrolled children have regular contact with developmental wellness coordinators: professionals trained in child development whose specific function is to give the child an independent voice in a system that is committed to hearing it.</p>
+    <p>An enrolled child cannot be gaslit without the gaslight being visible. Cannot be shamed into silence without the silence being noted. Cannot be made to feel that their inner experience is unwelcome, because there is always someone whose specific occupational assignment is to ask how this child is doing and to take the answer seriously.</p>
+
+    <div class="pullquote">
+      <p>In thirty-one years of Arbitration enrollment, there have been zero substantiated cases of child maltreatment in enrolled family units. This is not a rounding error. It is what happens when only people suited to parent are parenting.</p>
+    </div>
+
+    <p>At eighteen, enrolled minors' developmental framework ends. They are adults with full civil rights and no enrollment obligation. They are presented with the enrollment option — with complete information about what it entails and what the alternative looks like — and make their choice freely. In the history of the system, no adult child of enrolled parents has chosen not to enroll. This fact is cited both as evidence of the system's success and as the question the system's critics consider most important. Both positions are worth holding simultaneously.</p>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section id="legal" class="legal-section">
+  <div class="container-wide fade-in">
+    <div class="section-label">Legal Foundation</div>
+    <h2>Thirty-one years of challenge.<br><em>Every one upheld.</em></h2>
+    <p style="max-width:700px;">The Arbitration framework has been challenged in state and federal courts on virtually every conceivable ground. The record is unambiguous. The following cases represent the foundational legal architecture on which the system rests.</p>
+
+    <div class="legal-grid" style="margin-top: 3rem;">
+
+      <div class="case-item">
+        <div class="case-name">State Supreme Court — Year 6</div>
+        <h4>Harmon v. Arbiter National Services</h4>
+        <p>The first major challenge. The Ohio Supreme Court held 5-2 that the Civic Delegation Contract was valid and enforceable — that the Relinquishment Ceremony represented the most thoroughly documented act of voluntary consent in American contract law, and that no court could find duress in a process that included a judicial presence, four independent witnesses, a public gallery, a full contract reading, and a mandatory reflection period. The majority opinion remains the foundational text of enrollment law.</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-name">U.S. Supreme Court — Year 9</div>
+        <h4>United States v. Arbiter National Services</h4>
+        <p>The Department of Justice argued that aggregate voting delegation constituted an unlawful concentration of electoral power. The Court held 6-3 that the Voting Rights Act was designed to prevent suppression of votes, not their voluntary delegation. Each enrolled citizen had voted — through their delegate. The aggregate effect was coordination, not disenfranchisement, and coordination was constitutionally protected. The dissent, at sixty pages, remains widely studied.</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-name">Constitutional Amendment — Year 14</div>
+        <h4>The Twenty-Eighth Amendment</h4>
+        <p>Ratified after four consecutive federal election cycles in which delegated votes proved decisive, the Twenty-Eighth Amendment established the constitutional right of voluntary civic delegation, the legal framework for Qualified Civic Arbitration Entities, and the enforceability of permanent Civic Delegation Agreements. No court has found grounds to challenge its ratification. It is the law of the United States.</p>
+      </div>
+
+      <div class="case-item">
+        <div class="case-name">Federal Circuit Court — Year 9</div>
+        <h4>In Re: Enrolled Minor Framework Validity</h4>
+        <p>The federal circuit court upheld the Enrolled Minor framework as a valid alternative exercise of the state's existing parens patriae authority over children's welfare — finding that the framework's developmental oversight system was more comprehensive, more consistently applied, and more reliably responsive to child wellbeing than any prior child welfare system, and that it had been established with the full written consent of the parents who chose it.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label">Begin</div>
+  <h2>The life you were<br><em>meant to have.</em></h2>
+  <p>The enrollment process begins with a single Expression of Intent. Nothing is binding. No decision is made. You simply begin to learn what Arbitration is, with complete information, at your own pace, with no obligation to continue.</p>
+  <div class="cta-buttons">
+    <a href="#journey" class="btn-primary">Express Intent</a>
+    <a href="#concerns" class="btn-secondary">Review Concerns</a>
+  </div>
+
+  <div class="ornament" style="margin: 4rem auto 0;">
+    <div class="ornament-line" style="background: rgba(212,201,176,0.2);"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line" style="background: rgba(212,201,176,0.2);"></div>
+  </div>
+
+  <p style="margin-top: 3rem; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.2);">Enrollment is permanent and irrevocable except by mutual dissolution. The decision to enroll is the most consequential decision you will make. It is also, for those who make it, the last decision of its kind they will ever need to make alone.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mark">The Arbiter</div>
+  <p>
+    Civic Arbitration System — Established under the Arbitration Act<br>
+    Qualified Civic Arbitration Entity — Federal Registration #ARB-001<br>
+    All enrollment proceedings conducted pursuant to the Twenty-Eighth Amendment<br>
+    and the Civic Delegation Act as amended<br><br>
+    Delegation Centers located in 43 metropolitan and regional areas nationwide<br>
+    Civic Delegation Centers located in all 43 Delegation Center jurisdictions
+  </p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === '#' + current) {
+        link.style.color = 'var(--gold)';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

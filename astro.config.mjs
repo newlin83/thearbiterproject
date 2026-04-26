@@ -4,69 +4,45 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://www.thearbiterproject.com',
+  	base: '/',
 	integrations: [
 		starlight({
-			title: 'Liminal Forms',
+			title: 'The Arbiter Project',
 			tableOfContents: false,
-			description: 'The Backrooms, consciousness, and the source of everything humanity has ever built.',
+			description: 'A better way to live',
 			customCss: [
 				'./src/styles/custom.css',
 			],
 			sidebar: [
 				{
-					label: 'Core Framework',
+					label: 'Overview',
 					items: [
-						{ label: 'The Source of Civilization', slug: '' },
-						{ label: 'Platonic & Liminal Forms', slug: 'core/forms' },
-						{ label: 'Definitions', slug: 'core/definitions' },
-						{ label: 'What Remains', slug: 'core/remains' },
+						{ label: 'What Is Arbitration', slug: 'overview' },
+						{ label: 'Origin Story', slug: 'origin' },
 					],
 				},
 				{
-					label: 'Genesis',
+					label: 'Legal Framework',
 					items: [
-						{ label: 'Emergence', slug: 'consciousness/animals' },
-						{ label: 'Childhood Access', slug: 'consciousness/childhood-access' },
-						{ label: 'The Crossing', slug: 'consciousness/the-crossing' },
-						{ label: 'Thin Membranes', slug: 'consciousness/thin-membranes' },
-						{ label: 'Cognitive Deterioration', slug: 'consciousness/cognitive-deterioration' },
+						{ label: 'The Amendment', slug: 'legal/amendment' },
+						{ label: 'The Ceremony', slug: 'legal/ceremony' },
+						{ label: 'The Contract', slug: 'legal/contract' },
 					],
 				},
 				{
-					label: 'Civilization and History',
+					label: 'Life Inside Arbitration',
 					items: [
-						{ label: 'Law', slug: 'civilization/law' },
-						{ label: 'Religion & Philosophy', slug: 'civilization/religion' },
-						{ label: 'Architecture', slug: 'civilization/architecture' },
-						{ label: 'The Source', slug: 'civilization/the-source' },
-						{ label: 'Ancient Access', slug: 'civilization/ancient-access' },
-						{ label: 'The Degradation of Signal', slug: 'civilization/degradation' },
-						{ label: 'Why Now', slug: 'civilization/why-now' },
+						{ label: 'Daily Life', slug: 'ife/daily' },
+						{ label: 'Children & Families', slug: 'life/children' },
+						{ label: 'The Economics', slug: 'life/economics' },
 					],
 				},
 				{
-					label: 'The Backrooms',
+					label: 'The Story',
 					items: [
-						{ label: 'Origins', slug: 'backrooms/origins' },
-						{ label: 'Levels', slug: 'backrooms/levels' },
-						{ label: 'The Hum', slug: 'backrooms/hum' },
-						{ label: 'Entities', slug: 'backrooms/entities' },
-					],
-				},
-				{
-					label: 'The Weakening Signal',
-					items: [
-						{ label: 'The Noise', slug: 'signal/noise' },
-						{ label: 'The Non-Place', slug: 'signal/non-place' },
-						{ label: 'Beauty as Signal', slug: 'signal/beauty' },
-					],
-				},
-				{
-					label: 'Reference',
-					items: [
-						{ label: 'Sources', slug: 'reference/reading' },
-						{ label: 'Bibliography', slug: 'reference/biblio' },
-						{ label: 'About', slug: 'reference/about' },
+						{ label: 'Characters', slug: 'story/characters' },
+						{ label: 'Chapter Outline', slug: 'story/outline' },
 					],
 				},
 			],
