@@ -1,5 +1,5 @@
 ---
-title: Why Now
+title: Economics
 ---
 
 Coming soon.

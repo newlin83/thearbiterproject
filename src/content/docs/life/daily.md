@@ -1,5 +1,5 @@
 ---
-title: Origins
+title: Daily
 ---
 
 Coming soon.

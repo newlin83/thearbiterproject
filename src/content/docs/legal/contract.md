@@ -1,5 +1,5 @@
 ---
-title: The Noise
+title: Contract
 ---
 
 Coming soon.

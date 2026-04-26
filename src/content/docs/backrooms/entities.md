@@ -1,5 +1,0 @@
----
-title: Entities
----
-
-Coming soon.

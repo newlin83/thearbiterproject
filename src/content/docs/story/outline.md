@@ -1,5 +1,5 @@
 ---
-title: The Non-Place
+title: Outline
 ---
 
 Coming soon.
