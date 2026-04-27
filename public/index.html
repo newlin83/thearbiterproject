@@ -44,48 +44,129 @@
   }
 
   /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(250, 248, 244, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--rule);
-    padding: 0 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
+  /* NAV — Mike Mai typesettings style */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  backdrop-filter: blur(0.3em) saturate(6);
+  -webkit-backdrop-filter: blur(0.3em) saturate(6);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  margin: 0;
+}
+
+nav > ul {
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.45em 0.75em;
+  background-color: rgba(245, 240, 232, 0.85);
+  border-bottom: 1px solid var(--rule);
+}
+
+nav > ul > li {
+  width: 100%;
+}
+
+@media (min-width: 50em) {
+  nav > ul > li {
+    width: auto;
+  }
+}
+
+nav > ul > li:nth-of-type(2) > ul {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+nav > ul > li > ul a {
+  padding: 0.45em 0.75em;
+  display: block;
+}
+
+@media (min-width: 50em) {
+  nav > ul > li > ul a {
+    margin-inline: 0.3em;
+    padding-inline: 0;
   }
 
-  .nav-mark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
+  /* Documentation link gets the bordered button treatment */
+  nav > ul > li > ul > li:last-of-type > a {
+    padding: 0.45em 1em;
+    border: 1px solid var(--rule);
+    background-color: rgba(245, 240, 232, 0.9);
+    color: var(--gold);
   }
 
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
+  nav > ul > li > ul > li:last-of-type > a:hover {
+    border-color: var(--gold);
+    background-color: var(--gold);
+    color: var(--parchment);
   }
+}
 
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+nav a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border: none;
+  line-height: 1.45;
+  text-shadow:
+    0 0 .1em rgba(245,240,232,0.9),
+    .1em 0 .1em rgba(245,240,232,0.9),
+    0 .1em .1em rgba(245,240,232,0.9),
+    0 -.1em .1em rgba(245,240,232,0.9),
+    -.1em 0 .1em rgba(245,240,232,0.9);
+  transition: color 0.2s;
+}
 
-  .nav-links a:hover { color: var(--gold); }
+nav a:hover {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+nav h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin: 0;
+  line-height: 1.45;
+}
+
+nav h1 a {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.45em 0.75em;
+  display: block;
+}
+
+nav h1 a:hover {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* Remove the old mobile link since nav reflows naturally now */
+.nav-mobile-link {
+  display: none !important;
+}
 
   /* HERO */
   .hero {
@@ -769,17 +850,23 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-mark">The Arbiter</div>
-  <ul class="nav-links">
-    <li><a href="#what">What It Is</a></li>
-    <li><a href="#why">Why Now</a></li>
-    <li><a href="#outcomes">Outcomes</a></li>
-    <li><a href="#concerns">Concerns</a></li>
-    <li><a href="#journey">The Journey</a></li>
-    <li><a href="#daily">Daily Life</a></li>
-    <li><a href="#legal">Legal</a></li>
-    <li><a href="/overview/" class="nav-more">Full Documentation →</a></li>
+<nav data-typesettings>
+  <ul>
+    <li>
+      <h1><a href="/">The Arbiter</a></h1>
+    </li>
+    <li>
+      <ul>
+        <li><a href="#what">What It Is</a></li>
+        <li><a href="#why">Why Now</a></li>
+        <li><a href="#outcomes">Outcomes</a></li>
+        <li><a href="#concerns">Concerns</a></li>
+        <li><a href="#journey">The Journey</a></li>
+        <li><a href="#daily">Daily Life</a></li>
+        <li><a href="#legal">Legal</a></li>
+        <li><a href="/overview/">Documentation →</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
