@@ -40,16 +40,28 @@ The third space is where the legal framework of the proceeding is established on
 
 The Confirmation Judge reviews the file assembled through the Reception Hall and Preparation Room stages. They ask the person three questions, each recorded, each requiring a spoken and signed response:
 
-*Has anyone, at any point in this process, suggested to you — directly or indirectly — that your Arbitration enrollment status depends on completing this ceremony today?*
+<Steps>
 
-*Has anyone, at any point in this process, threatened you, threatened someone known to you, or offered you any benefit not described in your enrollment materials, in connection with today's proceeding?*
+1. **Question 1**
 
-*Are you proceeding today of your own free will, with full understanding that what you are about to do is permanent and irrevocable except by mutual dissolution agreement under the terms of the Civic Delegation Act?*
+   Has anyone, at any point in this process, suggested to you — directly or indirectly — that your Arbitration enrollment status depends on completing this ceremony today?
+
+2. **Question 2**
+
+   Has anyone, at any point in this process, threatened you, threatened someone known to you, or offered you any benefit not described in your enrollment materials, in connection with today's proceeding?
+
+3. **Question 3**
+
+   Are you proceeding today of your own free will, with full understanding that what you are about to do is permanent and irrevocable except by mutual dissolution agreement under the terms of the Civic Delegation Act?
+
+</Steps>
 
 The answers — which must be yes, yes, and yes, in that order, to continue — are transcribed verbatim by a court reporter whose transcript is printed in the room, reviewed by the person, signed by the person, and added to the file. The Confirmation Judge signs the transcript and issues a Certification of Readiness, which is a formal legal document confirming that the proceeding has met all statutory prerequisites. Without this Certification, the Delegation Chamber does not open.
+
 All four witnesses and both Procedural Officers who have accompanied the file to this point are present. All sign the Certification as witnesses to the Confirmation Judge's findings.
 
 ## The Delegation Chamber
+
 This is the room that people remember for the rest of their lives.
 
 The Delegation Chamber is the architectural and ceremonial center of the building — the space that the entire facility is organized around, the space whose proportions and materials are the most carefully considered, the space that communicates, without ambiguity, that what happens here is not ordinary. It is large. Not oppressively so, but large enough that the ceiling draws the eye upward and the sense of the room's volume registers physically. The materials are permanent ones: stone, hardwood, glass. Nothing that ages badly. Nothing that suggests impermanence.
