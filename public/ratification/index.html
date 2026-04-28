@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Road to Ratification — The Arbiter Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --parchment: #f5f0e8;
+    --warm-white: #faf8f4;
+    --gold: #8b6914;
+    --gold-light: #c9a84c;
+    --rule: #d4c9b0;
+    --muted: #7a7268;
+    --accent: #3d2b0e;
+    --subtle: #ececec;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    backdrop-filter: blur(0.3em) saturate(6);
+    -webkit-backdrop-filter: blur(0.3em) saturate(6);
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  nav > ul {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.45em 0.75em;
+    background-color: rgba(245, 240, 232, 0.85);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  nav > ul > li { width: 100%; }
+
+  @media (min-width: 50em) {
+    nav > ul > li { width: auto; }
+  }
+
+  nav > ul > li:nth-of-type(2) > ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  nav > ul > li > ul a { padding: 0.45em 0.75em; display: block; }
+
+  @media (min-width: 50em) {
+    nav > ul > li > ul a { margin-inline: 0.75em; padding-inline: 0; }
+    nav > ul > li > ul > li:last-of-type > a {
+      padding: 0.45em 1em;
+      border: 1px solid var(--rule);
+      background-color: rgba(245, 240, 232, 0.9);
+      color: var(--gold);
+    }
+    nav > ul > li > ul > li:last-of-type > a:hover {
+      border-color: var(--gold);
+      background-color: var(--gold);
+      color: var(--parchment);
+    }
+  }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: none;
+    line-height: 1.45;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 0.2em; }
+
+  nav h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  nav h1 a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 0.45em 0.75em;
+    display: block;
+  }
+
+  nav h1 a:hover { color: var(--gold); text-decoration: none; }
+
+  /* PAGE HEADER */
+  .page-header {
+    background: var(--parchment);
+    border-bottom: 1px solid var(--rule);
+    padding: 5rem 3rem 4rem;
+    text-align: center;
+  }
+
+  .page-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .page-eyebrow::before,
+  .page-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--accent);
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .page-header h1 em { font-style: italic; color: var(--gold); }
+
+  .page-header .lede {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* TIMELINE NAVIGATION */
+  .timeline-nav {
+    background: var(--accent);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(212,201,176,0.2);
+  }
+
+  .timeline-nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-right: 1px solid rgba(212,201,176,0.15);
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .timeline-nav a:first-child { border-left: 1px solid rgba(212,201,176,0.15); }
+  .timeline-nav a:hover { color: var(--gold-light); }
+
+  /* MAIN CONTENT */
+  .content-section {
+    padding: 5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .content-section:nth-child(even) {
+    background: var(--parchment);
+  }
+
+  .content-section:nth-child(odd) {
+    background: var(--warm-white);
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold-light);
+  }
+
+  .year-marker {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--accent);
+    margin-bottom: 1.75rem;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: #3a3530;
+    margin-bottom: 1.25rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* PULLQUOTE */
+  .pullquote {
+    border-left: 3px solid var(--gold-light);
+    padding: 1.25rem 2rem;
+    margin: 2.5rem 0;
+    background: rgba(201,168,76,0.05);
+  }
+
+  .pullquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* DATA CARDS */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    margin: 2.5rem 0;
+    background: var(--rule);
+  }
+
+  .data-card {
+    background: var(--warm-white);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .data-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .data-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* CEREMONY DAYS */
+  .ceremony-days {
+    margin: 2.5rem 0;
+  }
+
+  .ceremony-day {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .ceremony-day:last-child { border-bottom: 1px solid var(--rule); }
+
+  .day-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+    text-align: center;
+  }
+
+  .day-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .day-content p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* PHASE TIMELINE */
+  .phase-list {
+    margin: 2.5rem 0;
+    position: relative;
+  }
+
+  .phase-list::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .phase-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .phase-marker {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .phase-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .phase-duration {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .phase-content p {
+    font-size: 0.93rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* DARK SECTION */
+  .dark-section {
+    background: var(--accent);
+    padding: 5rem 3rem;
+    border-bottom: none;
+  }
+
+  .dark-section .section-label { color: var(--gold-light); }
+  .dark-section h2 { color: var(--parchment); }
+  .dark-section h2 em { color: var(--gold-light); }
+  .dark-section p { color: rgba(245,240,232,0.72); }
+  .dark-section h3 { color: var(--parchment); }
+
+  .dark-section .data-card { background: rgba(255,255,255,0.04); }
+  .dark-section .data-label { color: rgba(245,240,232,0.4); }
+
+  .dark-section .pullquote {
+    border-left-color: var(--gold-light);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .dark-section .pullquote p { color: var(--parchment); }
+  .dark-section .pullquote cite { color: rgba(245,240,232,0.4); }
+
+  /* ORNAMENT */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .ornament-line { flex: 1; height: 1px; background: var(--rule); }
+  .ornament-diamond { width: 6px; height: 6px; background: var(--gold-light); transform: rotate(45deg); }
+
+  .dark-section .ornament-line { background: rgba(212,201,176,0.2); }
+
+  /* BUILDING DESCRIPTION */
+  .building-block {
+    border: 1px solid var(--rule);
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    background: var(--warm-white);
+  }
+
+  .building-block h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+  .building-block p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.65;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0f0d0a;
+    color: rgba(245,240,232,0.4);
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .footer-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.22);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .content-section { padding: 3.5rem 1.5rem; }
+    .page-header { padding: 4rem 1.5rem 3rem; }
+    .timeline-nav { padding: 1.5rem; gap: 0.5rem; }
+    .timeline-nav a { border: none; padding: 0.4rem 0.75rem; }
+    .ceremony-day { grid-template-columns: 1fr; gap: 0.5rem; }
+    .day-number { font-size: 1.5rem; text-align: left; }
+  }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><h1><a href="/">The Arbiter</a></h1></li>
+    <li>
+      <ul>
+        <li><a href="/#what">What It Is</a></li>
+        <li><a href="/#why">Why Now</a></li>
+        <li><a href="/#outcomes">Outcomes</a></li>
+        <li><a href="/#concerns">Concerns</a></li>
+        <li><a href="/#journey">The Journey</a></li>
+        <li><a href="/legal/amendment/">The Amendment</a></li>
+        <li><a href="/overview/">Documentation →</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-eyebrow">Constitutional History</div>
+  <h1>The Road to<br><em>Ratification</em></h1>
+  <p class="lede">How thirty-four states, a constitutional convention that had never before been called, five days of ceremony, and seven years of construction permanently altered the American constitutional order.</p>
+</div>
+
+<!-- TIMELINE NAV -->
+<div class="timeline-nav">
+  <a href="#petition">The Petition</a>
+  <a href="#convention">The Convention</a>
+  <a href="#ratification">Ratification</a>
+  <a href="#ceremony">The Ceremony</a>
+  <a href="#building">The Building</a>
+  <a href="#centers">The Centers</a>
+  <a href="#year5">Year Five</a>
+</div>
+
+<!-- SECTION 1: THE PETITION -->
+<section class="content-section" id="petition">
+  <div class="container fade-in">
+    <div class="section-label">The Beginning</div>
+    <span class="year-marker">34</span>
+    <h2>The States<br><em>Petition Congress</em></h2>
+    <p>The mechanism had existed in the Constitution since 1787 and had never been used. Article V provides two paths to proposing constitutional amendments: Congress may propose them directly by a two-thirds vote of both houses, or — and this is the path never taken — two-thirds of state legislatures may apply for a constitutional convention, at which point Congress has no choice but to call one. The word in Article V is <em>shall</em>. It is not discretionary.</p>
+    <p>The applications accumulated over four years. They did not arrive in a coordinated wave. They arrived the way most consequential things arrive — one at a time, each one reported on individually, the pattern becoming legible only in retrospect. The first state application was filed quietly. The thirty-fourth arrived on a Tuesday morning and changed everything, because the thirty-fourth triggered the mandatory obligation that the previous thirty-three had been building toward.</p>
+    <p>By this point, Arbitration enrollment had crossed forty percent of the adult population. The enrolled population's delegated votes had been decisive in legislative elections in twenty-two states. The legislators who filed the applications were not acting against their constituents' interests. Their constituents, through the Arbitration system, had already expressed where they stood.</p>
+
+    <div class="data-grid">
+      <div class="data-card">
+        <span class="data-number">34</span>
+        <div class="data-label">States applying<br>to trigger convention</div>
+      </div>
+      <div class="data-card">
+        <span class="data-number">38</span>
+        <div class="data-label">States required<br>for ratification</div>
+      </div>
+      <div class="data-card">
+        <span class="data-number">42</span>
+        <div class="data-label">States ultimately<br>ratifying</div>
+      </div>
+    </div>
+
+    <p>Congress, upon receiving the thirty-fourth application, had no procedural options. The obligation to call the convention was absolute. What Congress retained was discretion over the convention's form — how delegates would be selected, how the convention would be structured, and critically, which ratification method would apply if the convention proposed an amendment. Congress chose state ratifying conventions rather than state legislatures, for reasons that were debated extensively and recorded in full in the Congressional Record.</p>
+
+    <div class="pullquote">
+      <p>The mechanism had waited two hundred and thirty-seven years to be used. When it was finally triggered, it worked exactly as designed. That it worked exactly as designed was itself the source of the deepest unease.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: THE CONVENTION -->
+<section class="content-section" id="convention">
+  <div class="container fade-in">
+    <div class="section-label">The Constitutional Convention</div>
+    <h2>A Convention<br><em>Never Before Called</em></h2>
+    <p>The constitutional convention assembled in Philadelphia — a choice of location that was not accidental and was not unopposed. Delegates argued that Philadelphia carried too much freight, that convening in the city of the original Constitutional Convention imported a symbolic weight that would distort the proceedings. They were overruled. The location was decided by Congress, which retained authority over the convention's administrative arrangements even as the convention itself was sovereign over its own deliberations.</p>
+    <p>The runaway convention fear was the dominant concern of the opposition throughout the proceedings. The text of Article V does not limit what a convention called for one purpose may propose. Delegates are sovereign representatives. Legal scholars who opposed the amendment spent the months before the convention's opening session warning that once assembled, the delegates could propose anything — could, in theory, propose an entirely new constitution, could strip existing rights, could alter the amendment process itself.</p>
+    <p>The convention adopted rules on its first day limiting its scope to the subject matter of the state applications. Whether those rules were constitutionally binding on the delegates was never definitively resolved. The delegates chose to honor them. The convention proposed one amendment. The debate lasted eleven weeks.</p>
+
+    <h3>The Legal Uncertainty That Remains</h3>
+    <p>Several constitutional questions arising from the convention were never answered by any court because the amendment passed before litigation could produce definitive rulings. Whether Congress could enforce the scope limitation. Whether a state could rescind its convention application after the thirty-fourth had been filed. Whether Delegation Magistrates appointed for ratification proceedings had Article III status. These questions exist in the record as unresolved. They remain unresolved. The amendment is in force regardless.</p>
+  </div>
+</section>
+
+<!-- SECTION 3: RATIFICATION -->
+<section class="content-section" id="ratification">
+  <div class="container fade-in">
+    <div class="section-label">State Ratification</div>
+    <h2>Four Years.<br><em>Forty-Two States.</em></h2>
+    <p>Congress set a four-year ratification window and specified that ratification would occur through state conventions rather than state legislatures. All fifty states organized ratifying conventions. The conventions varied enormously in their character — in some states the outcome was not in doubt and the proceedings were brief; in others, the debates lasted weeks and the votes were close.</p>
+    <p>The thirty-eighth state — the one whose ratification made the amendment constitutionally effective — became the focal point of national attention in the months before its convention met. Legal scholars flew in to testify. The arguments on both sides were made at their highest level. The national press covered every session. The vote, when it came, was fifty-one to forty-seven. The amendment passed.</p>
+    <p>Four additional states ratified before the four-year deadline. Forty-two certified ratification documents eventually arrived at the Office of the Archivist of the United States. The final count exceeded what was required by four, which was itself a statement — the breadth of support that a bare thirty-eight would not have conveyed.</p>
+
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <h3>The Archivist's Certification</h3>
+    <p>The Archivist of the United States — a nonpartisan official whose function is archival and administrative — received the thirty-eighth certified ratification document and then, over the following months, the thirty-ninth through forty-second. Under 1 U.S.C. § 106b, the Archivist issued a proclamation upon receipt of sufficient ratifications. The proclamation declared the Twenty-Eighth Amendment part of the Constitution, effective upon certification.</p>
+    <p>No ceremony accompanied the certification. No presidential signature was required. No congressional vote. An official in the National Archives signed a document and the Constitution changed. The most significant alteration to American constitutional democracy since the Civil War amendments was certified by someone whose title is Archivist and whose job is to ensure documents are filed correctly.</p>
+    <p>This is how it works. This is how it has always worked. Nobody stopped it. The process functioned exactly as designed. The design was always capable of producing this outcome and nobody fully believed it until it did.</p>
+  </div>
+</section>
+
+<!-- SECTION 4: THE CEREMONY — DARK -->
+<section class="dark-section" id="ceremony">
+  <div class="container fade-in">
+    <div class="section-label">The Ratification Ceremony</div>
+    <h2>Five Days.<br><em>One Room. Everything Changed.</em></h2>
+    <p>Congress created the ratification ceremony from nothing, because nothing in American civic tradition was adequate to the moment. Inaugurations, state funerals, the opening of Congress — these are ceremonies for moments within the existing constitutional order. This required a ceremony for the transformation of the order itself. A joint committee spent fourteen months designing it.</p>
+    <p>Every seat in the ratification chamber was assigned to a specific office rather than a specific person. The President's seat. The Chief Justice's seat. Each of the 179 appellate judges. Each state delegation. Every member of Congress. The eighteen members of the presidential line of succession seated with the Archivist at the front of the room. The constitutional order was present in its entirety.</p>
+
+    <div class="ceremony-days">
+
+      <div class="ceremony-day">
+        <div class="day-number">I</div>
+        <div class="day-content">
+          <h4>Arrival and Assembly</h4>
+          <p>All participants assembled in Washington. A formal roll call of every invited official — every member of Congress, every federal judge, every state delegate, the President and cabinet, the Supreme Court. Each office named. Each person standing in response. The roll call occupied most of the day. Its purpose was not ceremonial. It was documentary: establishing on the record that the constitutional order was fully present and accounted for at this moment.</p>
+        </div>
+      </div>
+
+      <div class="ceremony-day">
+        <div class="day-number">II</div>
+        <div class="day-content">
+          <h4>The Recitation</h4>
+          <p>The full text of the Constitution was read aloud in the ratification chamber. Not by one person — by a rotating sequence of officials, each reading a section. The amendment was read last, by the Archivist, in its final ratified form, for the first time in an official proceeding. The reading occupied the full day. Attendees were not permitted to leave during sections they did not read. The room was required to hear it in full.</p>
+        </div>
+      </div>
+
+      <div class="ceremony-day">
+        <div class="day-number">III</div>
+        <div class="day-content">
+          <h4>The Witnesses</h4>
+          <p>Testimony from three categories of witnesses. Constitutional scholars who opposed the amendment and those who supported it, given equal time. Former officials who were present for the convention process. And ordinary enrolled citizens — selected by assessment as representative of the full range of enrolled experience — who spoke briefly about what enrollment had meant to them. The presence of ordinary citizens among constitutional officers was itself a statement the ceremony made without commentary.</p>
+        </div>
+      </div>
+
+      <div class="ceremony-day">
+        <div class="day-number">IV</div>
+        <div class="day-content">
+          <h4>The Reflection</h4>
+          <p>No proceedings. The ratification chamber was open to the public. Any American could enter and sit in the room. No speeches. No program. Just the space and the people who came to be in it. Hundreds of thousands passed through over the course of the day. The line stretched along the Mall from before dawn. People waited for hours. Most stayed for less than ten minutes. They came to be there. That was sufficient.</p>
+        </div>
+      </div>
+
+      <div class="ceremony-day">
+        <div class="day-number">V</div>
+        <div class="day-content">
+          <h4>The Certification</h4>
+          <p>The Archivist rose at the front of the room with the eighteen members of the presidential line of succession standing behind. The President was present but not officiating — this was the Archivist's moment, the constitutional and administrative act that made everything else real. The Archivist read the certification proclamation in full. Signed it. The document was sealed into a case built into the front wall of the chamber — permanently, visibly, irremovably part of the building's structure. The amendment was in force. No applause had been designated. The silence that followed was not planned. It arrived on its own.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pullquote">
+      <p>The ceremony's designers debated whether to designate applause at the conclusion. They decided against it. What the silence would mean, they reasoned, should be left to each person present. The silence lasted four minutes and seventeen seconds. Nobody moved to end it.</p>
+      <cite>Congressional Record, Joint Committee on Ratification Ceremony Design</cite>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: THE BUILDING -->
+<section class="content-section" id="building">
+  <div class="container fade-in">
+    <div class="section-label">The Delegation Hall</div>
+    <h2>A Building for<br><em>What Comes Next</em></h2>
+    <p>Congress authorized construction of the Delegation Hall before the ratification ceremony was held, on the understanding that the building needed to exist before it was needed. The site selected — along Independence Avenue between the Jefferson Memorial and the White House, south of the Mall — was chosen for its symbolic position on one of the most loaded corridors in American civic geography. Jefferson wrote the Declaration. The White House houses the executive. Between them, a building for the moment the constitutional order it produced transformed itself.</p>
+    <p>The scale approaches that of the Capitol. This was deliberate. The building needed to communicate that the people who built it understood what they were building for — not a monument to an event but a monument to the ongoing consequence of that event, a structure whose size reflects the Arbiter's eventual reach into the constitutional order itself.</p>
+    <p>The materials are stone. Not glass and steel, which communicate modernity and transparency. Stone, which communicates that this will outlast everyone present. The exterior carries no signage beyond a bronze plate beside the entrance. The building presents itself as a fact rather than an institution.</p>
+
+    <div class="building-block">
+      <h4>The Ratification Chamber</h4>
+      <p>Every seat assigned to a specific office. A convergent arrangement where all seats face the Archivist's position — not hierarchical, not elevated, but convergent, communicating that every part of the constitutional order present was there for the same thing. After the ceremony, the chamber was sealed. The seats remain. The name plates remain. The papers on the desks remain, preserved. The certification document is visible in the front wall. Future visitors walk through the chamber as it was. It is a time capsule of the moment the order changed.</p>
+    </div>
+
+    <div class="building-block">
+      <h4>The Civic Delegation Facilities</h4>
+      <p>The operational heart of the building. Purpose-built processing facilities for the Washington flagship Civic Delegation Center — the rooms where enrolled individuals complete the final stages of their delegation, including the group Delegation Chamber accommodating up to 48 people simultaneously. Reserved for those who choose to travel to Washington for their ceremony, for public figures whose delegations carry additional public significance, and for the ongoing symbolic function of being the place where the process began.</p>
+    </div>
+
+    <div class="building-block">
+      <h4>The Public Archive</h4>
+      <p>A permanent exhibition space housing the documentary record of the ratification process — the state convention proceedings, the constitutional convention debates, the certified ratification documents from all 42 states, and the Archivist's certification proclamation in facsimile. The originals are in the National Archives. The Delegation Hall holds the record of how they came to exist.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: THE CENTERS -->
+<section class="content-section" id="centers">
+  <div class="container fade-in">
+    <div class="section-label">National Infrastructure</div>
+    <h2>One Thousand Centers.<br><em>A Phased Construction.</em></h2>
+    <p>Congress appropriated funding for a national network of Civic Delegation Centers in the same legislative session that authorized the Delegation Hall. The challenge was immediate: the amendment was in force, enrollment demand was surging, and purpose-built facilities of genuine architectural significance take years to construct. The solution was a phased approach that acknowledged this reality rather than trying to circumvent it.</p>
+
+    <div class="phase-list">
+
+      <div class="phase-item">
+        <div class="phase-marker">Phase<br>I</div>
+        <div class="phase-content">
+          <h4>Temporary Facilities</h4>
+          <span class="phase-duration">Months 1–18</span>
+          <p>Federal courthouses, convention centers, and National Guard armories repurposed for Delegation processing. Interior configurations — the five-room sequence, the Final Delegation Chamber — installed as modular construction within existing spaces. Approximately 300 temporary facilities established, processing 60,000 to 80,000 people daily. Sufficient to handle the most eager early wave. The temporary facilities are functional and serious but not permanent. Their modular construction is designed to be removed cleanly when the permanent facilities open.</p>
+        </div>
+      </div>
+
+      <div class="phase-item">
+        <div class="phase-marker">Phase<br>II</div>
+        <div class="phase-content">
+          <h4>Permanent Regional Centers</h4>
+          <span class="phase-duration">Years 2–5</span>
+          <p>Purpose-built permanent facilities constructed in order of population priority. Congress authorized a standardized design with regional material variations — the same sequence of rooms, the same proportions, the same architectural language — allowing parallel construction across multiple sites without redesigning each one from scratch. The largest metropolitan areas receive permanent facilities first. By year three, approximately 400 permanent facilities are operational. By year five, all 1,000 permanent facilities are complete. The temporary facilities close in sequence as their permanent replacements open.</p>
+        </div>
+      </div>
+
+      <div class="phase-item">
+        <div class="phase-marker">Phase<br>III</div>
+        <div class="phase-content">
+          <h4>The Washington Flagship</h4>
+          <span class="phase-duration">Years 3–7</span>
+          <p>The Delegation Hall's civic delegation facilities, the most complex and symbolically significant component of the national infrastructure, complete in year six. Until the permanent facility opens, Washington processing occurs in a temporary facility in the federal courthouse complex nearby. The opening of the permanent Washington facility is a significant event — the first group of 48 people to complete their delegation in the permanent chamber selected by lottery, their ceremony attended by members of Congress and covered nationally.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="data-grid">
+      <div class="data-card">
+        <span class="data-number">1,000</span>
+        <div class="data-label">Permanent centers<br>by year five</div>
+      </div>
+      <div class="data-card">
+        <span class="data-number">288</span>
+        <div class="data-label">People processed<br>per center per day</div>
+      </div>
+      <div class="data-card">
+        <span class="data-number">$48B</span>
+        <div class="data-label">Total program<br>appropriation</div>
+      </div>
+    </div>
+
+    <h3>The Delegation Magistrate System</h3>
+    <p>Each Final Delegation Chamber ceremony requires three presiding judges. With 1,000 facilities running multiple ceremonies daily, the existing federal judiciary — approximately 1,700 active judges — cannot provide sufficient coverage. Congress created the Delegation Magistrate, a specialized judicial officer with jurisdiction limited to Civic Delegation proceedings, appointed through an expedited confirmation process for the duration of the processing surge.</p>
+    <p>The constitutional status of Delegation Magistrates — whether they hold Article III status or are legislative court officers — was litigated and resolved in favor of the system's validity. The appointments proceeded. By year two of the processing surge, approximately 65,000 Delegation Magistrates are commissioned and active across the national network.</p>
+  </div>
+</section>
+
+<!-- SECTION 7: YEAR FIVE -->
+<section class="content-section" id="year5">
+  <div class="container fade-in">
+    <div class="section-label">The Processing Surge</div>
+    <h2>Year Five:<br><em>The System at Scale</em></h2>
+    <p>By year five following ratification, the infrastructure is complete and the enrollment surge is past its peak. The 1,000 permanent Civic Delegation Centers are operational. The temporary facilities have closed. The Delegation Hall's permanent facilities have been open for nearly a year. The line of people waiting to complete their delegation at the Washington flagship stretches around the building on most days — people choosing Washington the way people choose to be naturalized at historically significant locations, because the place adds meaning to the moment.</p>
+
+    <h3>What Year Five Looks Like</h3>
+    <p>Processing volume in year five runs at roughly sixty percent of the year-two peak. The people enrolling now are not the eager early wave of the first years. They are the gradual middle — the holdouts who waited, the people for whom the friction of the process matched the friction of their resistance for several years and has finally tipped, the young adults aging into eligibility who grew up watching the system become the dominant infrastructure of the world they inherited.</p>
+    <p>The non-enrolled population by year five is concentrated among specific categories: small business owners for whom occupational delegation remains the non-negotiable obstacle, ideological resisters who have made their position a settled part of their identity, and the elderly for whom the seven-month enrollment sequence represents a practical challenge rather than a philosophical one. The system continues processing. It has no deadline. It does not experience urgency.</p>
+
+    <div class="pullquote">
+      <p>Enrollment crosses the ninety-one percent threshold on a Tuesday in the seventh year. The Archivist issues no proclamation. The Arbiter generates no press release. The threshold is not public. One journalist does the math and publishes a piece noting that it has been crossed. Sixteen thousand people read it.</p>
+    </div>
+
+    <h3>The Delegation Hall at Year Five</h3>
+    <p>The ratification chamber receives approximately 4,000 visitors daily. The line forms before the building opens. Most visitors stay less than fifteen minutes. They come to stand in the room where the sealed certification document is visible in the front wall, where the name plates remain on the desks, where the chamber has been maintained exactly as it was on the fifth day of the ceremony. They come to be in the room where it became permanent. That is sufficient. That is what they came for.</p>
+    <p>The building is extraordinary. Whether this is reassuring is a question the building does not answer. It was not built to answer questions. It was built to last.</p>
+
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <p style="font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; margin-top: 2rem;">The amendment is in force. The infrastructure is built. The process continues.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mark">The Arbiter</div>
+  <p>
+    The Twenty-Eighth Amendment to the Constitution of the United States<br>
+    Ratified by 42 of 50 States — Certified by the Archivist of the United States<br>
+    Delegation Hall — Independence Avenue, Washington, District of Columbia<br><br>
+    This documentation is maintained by the Office of Constitutional Records<br>
+    under the authority of the Arbitration Act as amended
+  </p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
