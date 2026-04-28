@@ -736,6 +736,166 @@ nav h1 a:hover {
     font-style: normal;
   }
 
+  /* PROFILES SECTION */
+  .profiles-section {
+    background: var(--parchment);
+    border-top: 1px solid var(--rule);
+  }
+
+  .profile-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .profile-card:last-child {
+    border-bottom: none;
+  }
+
+  @media (min-width: 700px) {
+    .profile-card {
+      grid-template-columns: 240px 1fr;
+      align-items: start;
+      gap: 4rem;
+    }
+  }
+
+  .profile-portrait {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  /* Portrait photo — 1440×3120 ratio ≈ 1:2.167 */
+  .profile-photo {
+    width: 100%;
+    aspect-ratio: 1440 / 3120;
+    overflow: hidden;
+    background: var(--warm-white);
+    position: relative;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Placeholder shown when no image available */
+  .profile-photo-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(170deg, rgba(201,168,76,0.09) 0%, rgba(61,43,14,0.06) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .profile-photo-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.18;
+  }
+
+  .profile-photo-placeholder span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.5;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .profile-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+
+  .profile-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .profile-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin-top: 0;
+    margin-bottom: 0.85rem;
+    line-height: 1.2;
+  }
+
+  .profile-body h3 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .profile-bio {
+    font-size: 0.94rem;
+    color: #3a3530;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .profile-questions {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .profile-q {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 0.85rem;
+    align-items: start;
+  }
+
+  .profile-q-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-top: -0.05rem;
+  }
+
+  .profile-q-question {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+
+  .profile-q-answer {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+
   /* CTA SECTION */
   .cta-section {
     background: var(--accent);
@@ -861,6 +1021,7 @@ nav h1 a:hover {
         <li><a href="#concerns">Concerns</a></li>
         <li><a href="#journey">The Journey</a></li>
         <li><a href="#daily">Daily Life</a></li>
+        <li><a href="#profiles">Profiles</a></li>
         <li><a href="#legal">Legal</a></li>
         <li><a href="/ratification/">Ratification</a></li>
         <li><a href="/overview/">Documentation →</a></li>
@@ -1233,6 +1394,241 @@ nav h1 a:hover {
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section id="profiles" class="profiles-section">
+  <div class="container-wide fade-in">
+    <div class="section-label">Member Profiles</div>
+    <h2>Five women. Five lives.<br><em>One decision.</em></h2>
+    <p style="max-width:680px; margin-bottom: 4rem;">Every enrollment is its own story. These five women arrived at Arbitration from different cities, different circumstances, and different kinds of exhaustion. What they share is a willingness to ask, honestly, whether the life they were building was actually working — and to accept an answer that surprised them.</p>
+
+    <!-- SAM -->
+    <div class="profile-card fade-in">
+      <div class="profile-portrait">
+        <div class="profile-photo">
+          <img src="images/sam-portrait.png" alt="Samantha Edwards" onerror="this.style.display='none';">
+          <div class="profile-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="10" fill="#8b6914"/><ellipse cx="24" cy="42" rx="17" ry="10" fill="#8b6914"/></svg>
+            <span>sam-portrait.png<br>1440 × 3120</span>
+          </div>
+        </div>
+        <div>
+          <div class="profile-name">Samantha Edwards</div>
+          <div class="profile-meta">Age 36 · Chicago, IL<br>Research Compliance Officer</div>
+        </div>
+      </div>
+      <div class="profile-body">
+        <h3>The woman who needed<br><em>the system to believe her.</em></h3>
+        <p class="profile-bio">Sam grew up in Saginaw, Michigan — the kind of mid-sized Midwest city where ambition reads as restlessness and leaving reads as rejection. She left anyway. Michigan State, then a compliance role at the University of Chicago that she's good at in ways she could describe precisely but finds hard to care about deeply. She lives in Lincoln Square, in an apartment she chose carefully, in a neighborhood that suits her in most of the ways that matter. On paper, she is fine. She has been fine for a long time, and fine is a word she has come to distrust.</p>
+        <p class="profile-bio">What Sam wanted — and could not find a structure for — was for her competence to count somewhere. Not just to be noted and filed. She is one of the more analytically rigorous people in any room she enters, and she has spent her career in institutions that valued compliance more than insight. Arbitration's intake assessment was the first process that felt like it was actually paying attention.</p>
+        <div class="profile-questions">
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What made you decide to enroll?</div>
+              <p class="profile-q-answer">I kept waiting to feel like my life had clicked into place. I was doing everything right and it just wasn't clicking. The assessment was the first time I thought — maybe the problem isn't me. Maybe the problem is that nothing I've been placed in was built for someone like me.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">How do you feel about your life now compared to before?</div>
+              <p class="profile-q-answer">Quieter. Not in a bad way — in the way where you realize how much noise you were generating just to keep yourself moving. I don't have to push as hard anymore. Things fit.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What would you tell another woman who's considering this?</div>
+              <p class="profile-q-answer">Be honest in the assessment. That's it. The system can only give you what you actually are, not what you've been presenting. If you go in performing, you'll get a life built for the performance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABBIE -->
+    <div class="profile-card fade-in">
+      <div class="profile-portrait">
+        <div class="profile-photo">
+          <img src="images/abbie-portrait.png" alt="Abigail Foster" onerror="this.style.display='none';">
+          <div class="profile-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="10" fill="#8b6914"/><ellipse cx="24" cy="42" rx="17" ry="10" fill="#8b6914"/></svg>
+            <span>abbie-portrait.png<br>1440 × 3120</span>
+          </div>
+        </div>
+        <div>
+          <div class="profile-name">Abigail Foster</div>
+          <div class="profile-meta">Age 41 · South Shore, MA<br>Loss Control Consultant</div>
+        </div>
+      </div>
+      <div class="profile-body">
+        <h3>The woman who was tired<br><em>of holding everything.</em></h3>
+        <p class="profile-bio">Abbie grew up in Providence and has spent the better part of two decades getting very good at managing risk — other people's risk, professionally, and her own privately. She works in loss control for Hanover Insurance out of Worcester, which suits a certain kind of her: systematic, precise, prepared for what goes wrong. The rest of her — the part that wants to stop bracing — has had a harder time finding a fit.</p>
+        <p class="profile-bio">Single mother. An ex whose reliability is its own kind of risk to manage. A daughter named Mia who is the clearest thing in her life. A support network that's thinner than it looks because too much of it runs through her mother, and her mother has her own needs. Abbie has been the most competent person in most rooms she's entered for fifteen years. She enrolled because competence was costing her more than it was giving back, and she didn't know how to stop spending it.</p>
+        <div class="profile-questions">
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What made you decide to enroll?</div>
+              <p class="profile-q-answer">I was doing a risk assessment at work and I realized I had never once applied that framework to my own life. When I did — when I actually sat down and looked at the probability that things would just keep going the way they were going — I couldn't unsee it.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">How do you feel about your life now compared to before?</div>
+              <p class="profile-q-answer">Like I can breathe. That sounds simple but it isn't. I spent so long holding everything together that I forgot what it felt like to not be holding something. Mia has a mother who isn't running on empty. That's worth more than anything I gave up.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What would you tell another woman who's considering this?</div>
+              <p class="profile-q-answer">You're allowed to want help. That's the thing nobody told me. You don't have to have failed at everything before you're allowed to say this is too much for one person.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NIYA -->
+    <div class="profile-card fade-in">
+      <div class="profile-portrait">
+        <div class="profile-photo">
+          <img src="images/niya-portrait.png" alt="Taniyah Williams" onerror="this.style.display='none';">
+          <div class="profile-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="10" fill="#8b6914"/><ellipse cx="24" cy="42" rx="17" ry="10" fill="#8b6914"/></svg>
+            <span>niya-portrait.png<br>1440 × 3120</span>
+          </div>
+        </div>
+        <div>
+          <div class="profile-name">Taniyah Williams</div>
+          <div class="profile-meta">Age 37 · Houston, TX<br>Data &amp; Analytics Manager</div>
+        </div>
+      </div>
+      <div class="profile-body">
+        <h3>The woman whose life looked<br><em>exactly right from the outside.</em></h3>
+        <p class="profile-bio">Niya is from Houston's Third Ward. TSU. Houston Methodist, where she manages data and analytics for one of the largest medical centers in the country. She is tightly woven into a city of people who love her — family, church, TSU women, work friends. She could not have imagined leaving Houston and still can't. The density of those roots is part of what makes her life rich, and part of what makes it, occasionally, feel like a thing she was born into rather than a thing she chose.</p>
+        <p class="profile-bio">The life that looks right from the outside is not a lie, exactly. It's more like a picture with the exposure slightly wrong — close to the truth, close enough that you keep expecting to feel settled. She has been with someone good for two years and she knows, with a quiet certainty she has not said aloud, that she will not marry him. What she found in the enrollment process was something she hadn't expected: a system that asked what she actually wanted and treated the answer as though it had structural consequences.</p>
+        <div class="profile-questions">
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What made you decide to enroll?</div>
+              <p class="profile-q-answer">The section on community assessment made me cry. The idea that something would look at who I actually am — not who I'm supposed to be, not who everyone here already knows me as — and build from there. I have never been asked what I want in a way that felt like the question had real weight to it.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">How do you feel about your life now compared to before?</div>
+              <p class="profile-q-answer">I'm still in Houston. My family is still here. What's different is that when I show up for Sunday lunch, I'm there because I chose it that morning, not because it was always assumed. That sounds small. It isn't.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What would you tell another woman who's considering this?</div>
+              <p class="profile-q-answer">Be honest about what's underneath the life that looks good. Not to anyone else — to yourself. The system won't judge it. It'll just work with it. That was the thing I wasn't expecting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIFF -->
+    <div class="profile-card fade-in">
+      <div class="profile-portrait">
+        <div class="profile-photo">
+          <img src="images/tiff-portrait.png" alt="Tiffany Liang" onerror="this.style.display='none';">
+          <div class="profile-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="10" fill="#8b6914"/><ellipse cx="24" cy="42" rx="17" ry="10" fill="#8b6914"/></svg>
+            <span>tiff-portrait.png<br>1440 × 3120</span>
+          </div>
+        </div>
+        <div>
+          <div class="profile-name">Tiffany Liang</div>
+          <div class="profile-meta">Age 38 · Los Angeles, CA<br>Asset &amp; Risk Analyst</div>
+        </div>
+      </div>
+      <div class="profile-body">
+        <h3>The woman who optimized<br><em>everything except herself.</em></h3>
+        <p class="profile-bio">Tiff grew up in the San Gabriel Valley. Her parents were both engineers — her mother a chemist, her father mechanical — and the household ran on competence and expectation. She absorbed both completely. UCLA for undergrad. UCLA again for a master's in quantitative finance. A position at a boutique wealth management firm in Century City. An apartment in Koreatown she chose because she liked the neighborhood, not because anyone told her to.</p>
+        <p class="profile-bio">She is one of the sharper analytical minds in her firm and she has spent her career managing risk across portfolios worth more than she'll ever be paid. The irony she arrived at, slowly, was that she had never once applied her professional rigor to the question of her own life. She had assumed — in the way that high achievers assume — that achievement was its own answer. She enrolled when she could no longer find evidence for that assumption in the data of her actual experience.</p>
+        <div class="profile-questions">
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What made you decide to enroll?</div>
+              <p class="profile-q-answer">I model portfolios for a living. At some point I had to be honest that I had never stress-tested my own life the way I would a client's. When I did — when I actually ran the numbers, metaphorically — the expected value wasn't what I'd been telling myself it was.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">How do you feel about your life now compared to before?</div>
+              <p class="profile-q-answer">Less managed by me, more suited to me. I know that sounds like the same thing. It isn't. There's a difference between optimization you perform and optimization that's just — structural. Built in. I'm not working as hard to be okay.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What would you tell another woman who's considering this?</div>
+              <p class="profile-q-answer">If you're the kind of person who does everything yourself because it's easier — stop and ask why you think that. I thought it was because I was capable. I think it was actually because I was afraid of what would happen if I let go. Both things were true. The second one was more important.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DANI -->
+    <div class="profile-card fade-in">
+      <div class="profile-portrait">
+        <div class="profile-photo">
+          <img src="images/dani-portrait.png" alt="Daniela Cruz" onerror="this.style.display='none';">
+          <div class="profile-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="10" fill="#8b6914"/><ellipse cx="24" cy="42" rx="17" ry="10" fill="#8b6914"/></svg>
+            <span>dani-portrait.png<br>1440 × 3120</span>
+          </div>
+        </div>
+        <div>
+          <div class="profile-name">Daniela Cruz</div>
+          <div class="profile-meta">Age 39 · Houston, TX<br>Energy Sector Sales</div>
+        </div>
+      </div>
+      <div class="profile-body">
+        <h3>The woman who built every door<br><em>herself — and then stopped.</em></h3>
+        <p class="profile-bio">Dani grew up in Gulfton, the daughter of Salvadoran immigrants who didn't go to college and gave everything so she could. She is the only one in her family who did. University of Houston's Bauer College of Business, then a career in energy sector sales that has taken her through rooms nobody from Gulfton was supposed to be in. She is excellent at it — at reading rooms, at closing, at being the most charming and most prepared person in the meeting. She lives in Midtown now, in the vibrancy she chose over the distance she grew up in.</p>
+        <p class="profile-bio">The thing about being the first is that the blueprint runs out. She built the career. She built the apartment. She gets out to see her parents maybe twice a month — Sundays, when the schedule allows. She ended a long-distance relationship last year that she is not as over as she claims. She enrolled at eleven o'clock on a work night and slept better than she had in months. She said it herself, in a text she almost sent to someone and then didn't: she was so tired of proving she could do everything herself. She had just never stopped to ask whether doing everything herself was actually working.</p>
+        <div class="profile-questions">
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What made you decide to enroll?</div>
+              <p class="profile-q-answer">I read something a woman said — that she was so busy proving she could do everything herself that she never stopped to ask if it was working. I read it four times. I didn't text it to anyone. I just sat with it for two weeks and then submitted my Expression of Intent.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">How do you feel about your life now compared to before?</div>
+              <p class="profile-q-answer">Like I stopped fighting for a second and the world didn't end. I spent so long on guard that I didn't realize how much energy that was taking. I'm still ambitious. I still work hard. I'm just not doing it from a defensive crouch anymore.</p>
+            </div>
+          </div>
+          <div class="profile-q">
+            <div class="profile-q-mark">"</div>
+            <div>
+              <div class="profile-q-question">What would you tell another woman who's considering this?</div>
+              <p class="profile-q-answer">You fought for everything you have. That was real and it was necessary and nobody's taking it away. But fighting is not the same as living. At some point you're allowed to put it down.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
