@@ -25,7 +25,7 @@ export default defineConfig({
 				{
 					label: 'Legal Framework',
 					items: [
-						{ label: 'The Road to Ratification', slug: '/ratification/' },
+						{ label: 'The Road to Ratification', link: '/ratification/' },
 						{ label: 'The Amendment', slug: 'legal/amendment' },
 						{ label: 'The Ceremony', slug: 'legal/ceremony' },
 						{ label: 'The Contract', slug: 'legal/contract' },
