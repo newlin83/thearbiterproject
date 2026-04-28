@@ -412,43 +412,31 @@
     margin-top: 0.25rem;
   }
 
-  .scale-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.35rem;
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    width: 100%;
   }
 
-  .scale-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .scale-options {
+  .scale-step {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
     align-items: center;
+    gap: 0.3rem;
   }
 
-  .scale-options input[type="radio"] {
+  .scale-step input[type="radio"] {
     width: auto;
+    margin: 0;
     accent-color: var(--gold);
+    cursor: pointer;
   }
 
-  .scale-numbers {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 2px;
-  }
-
-  .scale-num {
+  .scale-step span {
     font-family: 'DM Mono', monospace;
     font-size: 0.6rem;
     color: var(--muted);
-    flex: 1;
-    text-align: center;
+    line-height: 1;
   }
 
   /* ATTESTATION */
@@ -865,20 +853,17 @@
               <span class="sublabel">1 = deeply dissatisfied &nbsp; 10 = completely satisfied</span>
             </label>
             <div class="scale-field">
-              <div class="scale-options">
-                <input type="radio" name="life_satisfaction" value="1"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="2"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="3"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="4"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="5"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="6"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="7"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="8"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="9"> &nbsp;
-                <input type="radio" name="life_satisfaction" value="10">
-              </div>
-              <div class="scale-numbers">
-                <span class="scale-num">1</span><span class="scale-num">2</span><span class="scale-num">3</span><span class="scale-num">4</span><span class="scale-num">5</span><span class="scale-num">6</span><span class="scale-num">7</span><span class="scale-num">8</span><span class="scale-num">9</span><span class="scale-num">10</span>
+              <div class="scale-grid">
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="1"><span>1</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="2"><span>2</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="3"><span>3</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="4"><span>4</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="5"><span>5</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="6"><span>6</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="7"><span>7</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="8"><span>8</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="9"><span>9</span></div>
+                <div class="scale-step"><input type="radio" name="life_satisfaction" value="10"><span>10</span></div>
               </div>
             </div>
           </div>
@@ -890,20 +875,17 @@
               <span class="sublabel">1 = very little &nbsp; 10 = almost everything</span>
             </label>
             <div class="scale-field">
-              <div class="scale-options">
-                <input type="radio" name="cognitive_load" value="1"> &nbsp;
-                <input type="radio" name="cognitive_load" value="2"> &nbsp;
-                <input type="radio" name="cognitive_load" value="3"> &nbsp;
-                <input type="radio" name="cognitive_load" value="4"> &nbsp;
-                <input type="radio" name="cognitive_load" value="5"> &nbsp;
-                <input type="radio" name="cognitive_load" value="6"> &nbsp;
-                <input type="radio" name="cognitive_load" value="7"> &nbsp;
-                <input type="radio" name="cognitive_load" value="8"> &nbsp;
-                <input type="radio" name="cognitive_load" value="9"> &nbsp;
-                <input type="radio" name="cognitive_load" value="10">
-              </div>
-              <div class="scale-numbers">
-                <span class="scale-num">1</span><span class="scale-num">2</span><span class="scale-num">3</span><span class="scale-num">4</span><span class="scale-num">5</span><span class="scale-num">6</span><span class="scale-num">7</span><span class="scale-num">8</span><span class="scale-num">9</span><span class="scale-num">10</span>
+              <div class="scale-grid">
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="1"><span>1</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="2"><span>2</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="3"><span>3</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="4"><span>4</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="5"><span>5</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="6"><span>6</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="7"><span>7</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="8"><span>8</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="9"><span>9</span></div>
+                <div class="scale-step"><input type="radio" name="cognitive_load" value="10"><span>10</span></div>
               </div>
             </div>
           </div>
@@ -1142,7 +1124,7 @@
     const data = new FormData(form);
 
     try {
-      const res = await fetch('https://formspree.io/f/xzdylawl', {
+      const res = await fetch('https://formspree.io/f/xvgajpqw', {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
