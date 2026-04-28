@@ -1645,7 +1645,7 @@ nav h1 a:hover {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px' });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
