@@ -1,6 +1,8 @@
 ---
-title: Houston. Midtown. Sunday 7:00 AM.
+title: Chapter 1
 ---
+# Houston. Midtown. Sunday 7:00 AM.
+
 The sun was finally getting bright enough that Niya was fully awake. Her body was angled towards the window—then she rolled to look at the early morning sun that sifted through the blinds to hide on the back wall. Marcus was sleeping.
 
 Her bonnet was still on the floor from the night before. It’s always on the floor when Marcus is here. She went to her dresser and stepped into her usual sweatpants and TSU t-shirt—the one her college boyfriend had gotten for her. The silk bonnet was last. Sweeping her arm to grab it she pulled the bonnet over her locs then eased into her robe that was laid across her chair. At least the slippers were still in their usual place. Marcus still hadn’t moved.
