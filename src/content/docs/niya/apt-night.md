@@ -1,0 +1,116 @@
+---
+title: Niya’s Apartment. 5:30 PM.
+---
+Her apartment felt different when they got back — smaller, maybe, after the expansiveness of her parents' backyard, the pecan tree, the specific size of her family's Sunday. She put the food away while Marcus found something on the TV. They watched a movie she didn't choose and didn't dislike enough to say anything about. He sat on one end of the couch. She sat on the other with her legs tucked under her, a throw blanket pulled across her lap.
+
+During the movie she thought about Porkchop in his too-large suit, talking about belonging. She thought about what the Bishop had said about the specific life. She thought about her grandmother's voice describing forty-three years of someone who had never let her feel alone in something, and she looked at the man on the other end of her couch and tried to imagine her grandmother describing him that way in forty-three years and could not do it.
+
+It wasn't his job. She had been raised by a man who worked for the city for thirty-one years in a job that didn't make him rich and the job had never once made him smaller. Her father was one of the most fully realized men she had ever known and he had done it without a title that impressed anyone at a dinner party. It wasn't what Marcus did. It was the specific shape of how he occupied his own life — something slightly unfinished about it, a quality of waiting for something to make him into the version of himself he intended to be, as though that version were going to arrive from outside rather than be built from inside. She had watched for two years for evidence that she was wrong about this. She had not found it.
+
+He left after the movie with the specific efficiency of someone who was still slightly aggrieved and wanted her to notice. She said goodnight. She meant it. He drove away.
+
+The apartment was hers again at seven o'clock, which was the feeling she was slightly ashamed of and which kept happening anyway.
+
+She moved through the apartment in the way she moved through Sunday evenings — unhurried, deliberate, the space organizing itself around her the way it only did when she was alone in it. She wrapped her hair with the specific care it required and applied her edge control and her night moisturizer, working through the routine her mother had started teaching her when she was eleven and which she had refined over twenty-five years into something that was partly maintenance and partly ritual, the acts of care that were not for anyone else and didn't need to be. She made a cup of chamomile tea and drank it standing at her kitchen counter looking at nothing in particular.
+
+She changed into her sleep shorts and the old TSU t-shirt she'd had since sophomore year, washed her face, and sat on her bed with her phone. The Sunday texts had accumulated — her mother asking if they'd gotten home safe, Jerome sending a voice note of his son saying something funny she'd have to remember to play tomorrow, a friend from work, a notification from something she didn't open.
+
+She texted Keisha at 7:43 PM. Keisha was her oldest friend, who had known her since sixth grade and who lived in the Woodlands now, but they still text all the time and pick up mid conversation without needing to get into it first.
+…
+Church was good today ⛪️✨
+Pastor preached something I’m still thinking about
+Mama June said something about Grandpa, it’s sitting with me
+Good Sunday then. How’s Marcus?
+He’s fine.
+We watched a movie. He just left.
+Just left or you put him out? 😏
+Keisha 😑
+I’m serious 🤷🏾‍♀️
+He just left. It was fine. It was just a long day. I’ve just been thinking.
+Thinking about what?
+Us. Marcus and me. Whether I’m doing right by this.
+I feel like if I just give it more time. He’s been doing better Keish.
+Doing better how?
+He came to church. He’s been showing up more. 
+He’s trying. I can see he’s trying.
+Niya ✋🏾
+Baby 🥺
+He came to church in what. The outfit you picked out for him? 🤨
+That’s not fair.
+Is it not?
+Did you send him money this month?
+He had some things come up
+😡😡😡
+He always has some things come up
+How long have some things been coming up Niya?
+Three years???
+He’s been through a lot. You know he doesn’t mean to be like this.
+I’m not saying he’s perfect. I understand where it comes from
+I know you understand
+That’s the problem
+His mama struggled. His grandmama struggled. Every woman he watched growing up held on and gave everything to a man who was walking all over them. That’s what love looks like to him. A woman who stays no matter what. Forgives the cheating. Covers the bills. Teaches him how to dress and show up and act right. And calls it devotion.
+And now he expects you to do the same thing 💯because that’s what the women in his family did
+Where are those women now Niya? 
+That’s not what this is
+That is exactly what it is 🙅🏾‍♀️
+You forgave the cheating
+You send him money every month
+You picked out his clothes
+You’ve been patient and understanding and you keep finding reasons to stay
+I love you for your heart Niya I do
+But those women in his family, if you asked every one of them—would they do it the same way?
+So what am I supposed to do? Just leave?
+Three years is a long time Keish
+I know it is
+But you help him build. You’ve poured yourself into him for three years
+And one day he’s going to leave
+And the woman he ends up with, she’s getting a finished project
+He’s going to take care of her because you taught him and supported him for years
+On your time
+With your money
+With your patience
+That’s not love Niya
+That’s a little harsh
+Is it?
+The more you do for a man like Marcus the more he loses respect for you. Because he was raised to believe that a woman who gives everything is a woman who can be taken from. That’s all he knows. That’s what he watched.
+You are not his mama
+You are not his ride or die
+You are not supposed to teach him how to be a grown man
+😞
+Anyway. What’s that arbiter thing you told me about?
+It’s something I found. A program. It’s hard to explain.
+[https://www.thearbiterproject.com/](https://www.thearbiterproject.com/)
+I’ve been reading about it for a few weeks. Looking at these profiles of women who went through it.
+What kind of program
+You give them some things
+They take care of you. Like really take care of you. Keish, it just feels right.
+How much time have you spent looking at it?
+Every night for weeks
+Every night??
+Niya
+That’s not curiosity
+God is not in the business of making you small. And anything that keeps pulling you back when everything else is pulling you down. That’s not nothing. That’s information. 
+Do what you need to do
+But please
+Stop spending your best years being somebody’s mama…
+I hear you
+I know you do 🫂
+Love you
+Love you too ❤️😘
+Night Keish 🌙
+…
+Niya sat with her phone in her lap for a moment. The apartment was very quiet. The city outside was doing what it did on Sunday nights, settling into itself before Monday. She could hear the air conditioning and nothing else.
+
+She opened the browser and went to the site and read the profiles again — all five of them, slowly, the way she'd read them the first time. She read Sam's section about waiting for her life to click into place. She read the line about the life that looks right from the outside, the exposure slightly wrong, close enough to the truth that you keep expecting to feel settled. She sat with that one for a while.
+
+She filled out the Expression of Intent at eight fifty-one on a Sunday night, sitting cross-legged on her bed in her old TSU shirt. She answered the questions the way Keisha had told her to answer everything that mattered, which was to say exactly what was true without deciding in advance whether the truth was acceptable. What she wanted. What she was least willing to give up. What success would have to look like. What she was afraid wouldn't survive.
+
+She submitted it and put her phone face-down on the nightstand.
+
+She picked up the book the Bishop [6.1]had recommended to the congregation three weeks ago — a slim volume about purpose and surrender, about the difference between the life you build from fear and the life you build from trust, about what it means to be still enough to hear what you've actually been assigned. She'd started it twice and gotten twenty pages in both times. Tonight she got to forty-three. The Bishop had a way of recommending things at exactly the right moment, which she had stopped being surprised by.
+
+She put on music low — something her cousin had sent her, a playlist that moved through gospel and then R&B and then something quieter, instrumental, the kind of music that didn't ask anything of you. She lay in the dark and listened to it and felt the Sunday in her body — her grandmother's hand, the weight of the ribs, the Bishop's voice, the particular quality of her mother's kitchen, the pecan tree's shade, the movie she hadn't chosen, the twelve-minute gap before Keisha's real answer, the form she'd filled out honestly for the first time in a long time.
+
+She was asleep before ten.
+
+Outside, Houston kept doing what Houston does on Sunday nights. The Third Ward settled into itself. The church was dark and the grill was cold and her grandmother was in her chair watching the evening news. The Arbiter's website stayed lit, somewhere in the world's infrastructure, waiting without urgency for whoever found it next.

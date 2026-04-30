@@ -16,20 +16,29 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
+					label: 'Niya',
+					items: [
+						{ label: 'Chapter 1: Wake', slug: 'niya/sunday-morning' },
+						{ label: 'Chapter 2: Church', slug: 'niya/church' },
+						{ label: 'Chapter #: Apartment', slug: 'niya/apt-night' },
+						{ label: 'Chapter #: Arbitration', slug: 'niya/first-days' },
+					],
+				},
+				{
 					label: 'Overview',
 					items: [
-						{ label: 'What Is Arbitration', slug: 'overview' },
+						{ label: 'What is Arbitration', slug: 'overview' },
 						{ label: 'Origin Story', slug: 'origin' },
 					],
 				},
 				{
 					label: 'Legal Framework',
 					items: [
-						{ label: 'The Road to Ratification', link: '/ratification/' },
-						{ label: 'The Amendment', slug: 'legal/amendment' },
 						{ label: 'The Ceremony', slug: 'legal/ceremony' },
+						{ label: 'The Amendment', slug: 'legal/amendment' },
 						{ label: 'The Contract', slug: 'legal/contract' },
 						{ label: 'Landmark Legal Cases', slug: 'legal/cases' },
+						{ label: 'The Road to Ratification', link: '/ratification/' },
 					],
 				},
 				{
