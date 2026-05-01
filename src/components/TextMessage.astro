@@ -56,18 +56,17 @@ const { text, sent = false, from, time } = Astro.props;
   }
 
   .sender-name {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--sl-color-gray-3, #a0a0a0);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: #8e8e93;
     margin-bottom: 0.25rem;
     padding: 0 0.75rem;
   }
 
   .bubble {
     max-width: 72%;
-    padding: 0.6rem 0.95rem;
+    padding: 0.65rem 1rem;
     border-radius: 1.2rem;
     line-height: 1.5;
     position: relative;
@@ -89,15 +88,14 @@ const { text, sent = false, from, time } = Astro.props;
   }
 
   .bubble-text {
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: 0.95rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.05rem;
   }
 
   .timestamp {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    color: var(--sl-color-gray-3, #a0a0a0);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.68rem;
+    color: #8e8e93;
     margin-top: 0.2rem;
     padding: 0 0.75rem;
   }
