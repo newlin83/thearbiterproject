@@ -1,6 +1,9 @@
 ---
 title: Niya’s Apartment. 5:30 PM.
 ---
+import TextMessage from '../../components/TextMessage.astro';
+import TextThread from '../../components/TextThread.astro';
+
 Her apartment felt different when they got back — smaller, maybe, after the expansiveness of her parents' backyard, the pecan tree, the specific size of her family's Sunday. She put the food away while Marcus found something on the TV. They watched a movie she didn't choose and didn't dislike enough to say anything about. He sat on one end of the couch. She sat on the other with her legs tucked under her, a throw blanket pulled across her lap.
 
 During the movie she thought about Porkchop in his too-large suit, talking about belonging. She thought about what the Bishop had said about the specific life. She thought about her grandmother's voice describing forty-three years of someone who had never let her feel alone in something, and she looked at the man on the other end of her couch and tried to imagine her grandmother describing him that way in forty-three years and could not do it.
@@ -17,13 +20,18 @@ She changed into her sleep shorts and the old TSU t-shirt she'd had since sophom
 
 She texted Keisha at 7:43 PM. Keisha was her oldest friend, who had known her since sixth grade and who lived in the Woodlands now, but they still text all the time and pick up mid conversation without needing to get into it first.
 …
-Church was good today ⛪️✨
-Pastor preached something I’m still thinking about
-Mama June said something about Grandpa, it’s sitting with me
-Good Sunday then. How’s Marcus?
-He’s fine.
-We watched a movie. He just left.
-Just left or you put him out? 😏
+
+<TextThread label="Sunday, 7:43 PM">
+  <TextMessage sent text="Church was good today ⛪️✨" />
+  <TextMessage sent text="Pastor preached something I’m still thinking about" />
+  <TextMessage sent text="Mama June said something about Grandpa, it’s sitting with me" />
+  <TextMessage from="Keisha" text="Good Sunday then. How's Marcus?" />
+  <TextMessage sent text="He's fine." />
+  <TextMessage sent text="We watched a movie. He just left." />
+  <TextMessage from="Keisha" text="Just left or you put him out? 😏" />
+</TextThread>
+
+
 Keisha 😑
 I’m serious 🤷🏾‍♀️
 He just left. It was fine. It was just a long day. I’ve just been thinking.
