@@ -1,0 +1,104 @@
+---
+/**
+ * TextMessage.astro
+ * iMessage-style chat bubbles for The Arbiter Project
+ *
+ * Usage in .mdx files:
+ *   import TextMessage from '../../components/TextMessage.astro';
+ *   import TextThread from '../../components/TextThread.astro';
+ *
+ *   <TextThread>
+ *     <TextMessage from="Darius" text="Did you read the full contract?" />
+ *     <TextMessage from="Maya" text="All 847 pages 😐" sent />
+ *     <TextMessage from="Darius" text="And?" />
+ *   </TextThread>
+ *
+ * Props:
+ *   text  — the message content (string, supports emoji)
+ *   sent  — boolean flag; if present, bubble appears on the right (blue)
+ *           omit for received messages (gray, left side)
+ *   from  — sender name shown above the first bubble in a run (optional)
+ *   time  — timestamp string shown below bubble (optional, e.g. "11:42 AM")
+ */
+
+interface Props {
+  text: string;
+  sent?: boolean;
+  from?: string;
+  time?: string;
+}
+
+const { text, sent = false, from, time } = Astro.props;
+---
+
+<div class:list={['message-row', sent ? 'sent' : 'received']} not-content>
+  {from && <span class="sender-name">{from}</span>}
+  <div class="bubble">
+    <span class="bubble-text">{text}</span>
+  </div>
+  {time && <span class="timestamp">{time}</span>}
+</div>
+
+<style>
+  .message-row {
+    display: flex;
+    flex-direction: column;
+    margin: 0.2rem 0;
+    max-width: 100%;
+  }
+
+  .message-row.sent {
+    align-items: flex-end;
+  }
+
+  .message-row.received {
+    align-items: flex-start;
+  }
+
+  .sender-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3, #a0a0a0);
+    margin-bottom: 0.25rem;
+    padding: 0 0.75rem;
+  }
+
+  .bubble {
+    max-width: 72%;
+    padding: 0.6rem 0.95rem;
+    border-radius: 1.2rem;
+    line-height: 1.5;
+    position: relative;
+    word-break: break-word;
+  }
+
+  /* Sent — iMessage blue */
+  .sent .bubble {
+    background-color: #0A84FF;
+    color: #ffffff;
+    border-bottom-right-radius: 0.3rem;
+  }
+
+  /* Received — dark gray */
+  .received .bubble {
+    background-color: #3A3A3C;
+    color: #f2f2f7;
+    border-bottom-left-radius: 0.3rem;
+  }
+
+  .bubble-text {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 0.95rem;
+  }
+
+  .timestamp {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    color: var(--sl-color-gray-3, #a0a0a0);
+    margin-top: 0.2rem;
+    padding: 0 0.75rem;
+  }
+</style>

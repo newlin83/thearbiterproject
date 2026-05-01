@@ -1,0 +1,57 @@
+---
+/**
+ * TextThread.astro
+ * Wrapper for a sequence of TextMessage components.
+ * Provides the phone-screen container, padding, and dark background.
+ *
+ * Usage:
+ *   <TextThread label="Tuesday, March 4 — 11:38 AM">
+ *     <TextMessage from="Darius" text="Did you read the full contract?" />
+ *     <TextMessage from="Maya" text="All 847 pages 😐" sent />
+ *   </TextThread>
+ *
+ * Props:
+ *   label — optional date/time header shown above the thread (string)
+ */
+
+interface Props {
+  label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class="text-thread" not-content>
+  {label && <div class="thread-label">{label}</div>}
+  <div class="thread-messages">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .text-thread {
+    background: #1c1c1e;
+    border-radius: 1rem;
+    padding: 1.5rem 1.25rem;
+    margin: 2rem auto;
+    max-width: 480px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .thread-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8e8e93;
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .thread-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+</style>
